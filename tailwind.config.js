@@ -12,6 +12,7 @@ export default {
                 'text-gray': '#727272',
                 'base-green': '#1ed760',
                 'text-green': '#169c46',
+                'invalid': '#e91429',
             },
             borderRadius: {
                 'base-field': '9999px',
