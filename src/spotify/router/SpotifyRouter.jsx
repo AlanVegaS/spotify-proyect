@@ -1,15 +1,15 @@
-import { SpotifyPage } from "../pages/SpotifyPage";
+import { SpotifyLayout } from "../layout/SpotifyLayout";
 import { Navigate } from "react-router-dom";
 
 export const SpotifyRouter = [
     {
         index: true,
         path: "",
-        element: <SpotifyPage />,
+        element: <SpotifyLayout />,
     },
     {
         path: "home",
-        element: <SpotifyPage />,
+        element: <SpotifyLayout />,
     },
     {
         path: "*",

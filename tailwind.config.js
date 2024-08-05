@@ -23,6 +23,11 @@ export default {
                 '128': '32rem',
             }, width: {
                 '128': '32rem',
+            }, gap: {
+                'sm': '0.5rem',
+            },
+            padding: {
+                'sm': '0.5rem',
             }
         },
     },

@@ -8,13 +8,12 @@ export const authSlice = createSlice({
     },
     reducers: {
         login: (state, { payload }) => {
-            console.log(payload);
             state.status = 'authenticated'
             state.userName = payload
         },
         logout: (state) => {
             state.status = 'not-authenticated',
-                state.userName = null
+            state.userName = null
         }
     }
 });

@@ -1,0 +1,17 @@
+.grid-layout {
+    display: grid;
+    grid-template: 'side main' 1fr
+        'footer footer' 5.5em/ 20em 1fr;
+}
+
+.side {
+    grid-area: side;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}
