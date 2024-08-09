@@ -1,7 +1,7 @@
 export const MainContent = () => {
     return (
-      <main className="bg-red-900 main">
-        main
+      <main className="bg-deep-gray main rounded-lg">
+        
       </main>
     );
   };  

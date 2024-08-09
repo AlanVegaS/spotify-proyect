@@ -1,9 +1,11 @@
+import { Home, Library } from "../components/";
 import '../styles/style.css';
 
 export const SideBar = () => {
-    return (
-      <aside className="bg-slate-600 side">
-        side
-      </aside>
-    );
-  };  
+  return (
+    <aside className="side flex flex-col gap-sm">
+      <Home></Home>
+      <Library></Library>
+    </aside>
+  );
+};  
