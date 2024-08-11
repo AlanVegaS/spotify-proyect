@@ -1,7 +1,7 @@
 .grid-layout {
     display: grid;
     grid-template: 'side main' 1fr
-        'footer footer' 5.5em/ 20em 1fr;
+        'footer footer' 5.5em/ 18em 1fr;
 }
 
 .side {
@@ -16,16 +16,16 @@
     grid-area: footer;
 }
 /* Sizes also in 'tailwind.config.js' */
-@media ((min-width: 768px) and (max-width: 1280px)) {
+@media ((min-width: 965px) and (max-width: 1280px)) {
     .grid-layout {
         grid-template: 'side main' 1fr
-            'footer footer' 5.5em/ 42.5% 1fr;
+            'footer footer' 5.5em/ 30% 1fr;
     }
 }
 
 @media (min-width: 1280px) {
     .grid-layout {
         grid-template: 'side main' 1fr
-            'footer footer' 5.5em/ 33em 1fr;
+            'footer footer' 5.5em/ 25em 1fr;
     }
 }

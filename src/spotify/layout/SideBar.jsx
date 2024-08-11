@@ -1,4 +1,4 @@
-import { Home, Library } from "../components/";
+import { Home, Library } from "../components/library";
 import '../styles/style.css';
 
 export const SideBar = () => {
