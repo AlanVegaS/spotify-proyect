@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-export const LibraryItem = ({ type, name }) => {
+export const LibraryItem = ({ type, name, img }) => {
     return (
         <figure className="group flex p-sm duration-100 cursor-pointer hover:bg-hover-article active:bg-deep-black">
             <div className="w-figure h-figure relative">
                 <img
                     className={`h-full w-full rounded-${type === 'Artist' ? 'base-field' : 'sm'}`}
-                    src="https://i.scdn.co/image/ab67616d000011eb5fdcfafcc8e7831c5fe2c618" alt="profile" />
+                    src={img} alt="cover" />
                 <div className={`hidden absolute top-0 bg-hover-shadow w-figure h-figure group-hover:flex items-center justify-center rounded-${type === 'Artist' ? 'base-field' : 'sm'}`}>
                     <svg role="img" aria-hidden="true" viewBox="0 0 24 24" className="h-6 fill-white "><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
                 </div>
@@ -22,9 +22,5 @@ export const LibraryItem = ({ type, name }) => {
 LibraryItem.propTypes = {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-}
-
-LibraryItem.defaultProps = {
-    type: 'Artist',
-    name: 'Eldamar',
+    img: PropTypes.string.isRequired,
 }

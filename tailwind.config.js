@@ -15,7 +15,9 @@ export default {
                 'invalid': '#e91429',
                 'text-white': '#fff',
                 'hover-article': '#1f1f1f',
-                'hover-shadow': 'rgba(0,0,0,.5)'
+                'hover-shadow': 'rgba(0,0,0,.5)',
+                'traslucid-1': 'hsla(0,0%,100%,.1)',
+                'traslucid-2': 'hsla(0,0%,100%,.2)',
             },
             borderRadius: {
                 'base-field': '9999px',
@@ -25,6 +27,7 @@ export default {
             }, height: {
                 '128': '32rem',
                 'figure': '48px',
+                '75': '75%',
             }, width: {
                 '128': '32rem',
                 'figure': '48px',
@@ -34,7 +37,11 @@ export default {
             },
             padding: {
                 'sm': '0.5rem',
+                'md': '0.8rem',
                 'lg': '1.3rem'
+            },
+            margin: {
+                'sm': '0.5rem',
             },
             screens: {/* Sizes also in 'tailwind.config.js' */
                 'sm': { 'min': '10px', 'max': '964px' },
@@ -43,6 +50,12 @@ export default {
             },
             transitionDuration: {
                 'text': '300ms',
+            },
+            scale: {
+                '102': '102%',
+            }, boxShadow: {
+                'play': '5px 5px 20px rgba(0, 0, 0, .5);',
+                'cover' : '0px 0 20px rgba(0, 0, 0, .2);',
             }
         },
     },

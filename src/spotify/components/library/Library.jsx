@@ -14,7 +14,7 @@ export const Library = () => {
 
                 </div>
                 <div>
-                    <LibraryItem></LibraryItem>
+                    <LibraryItem img='https://i.scdn.co/image/ab67616d000011eb5fdcfafcc8e7831c5fe2c618' name='Eldamar' type='Artist'></LibraryItem>
                 </div>
             </div>
         </section>
