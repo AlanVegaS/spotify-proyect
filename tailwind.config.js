@@ -46,7 +46,8 @@ export default {
             screens: {/* Sizes also in 'tailwind.config.js' */
                 'sm': { 'min': '10px', 'max': '964px' },
                 'md': { 'min': '965px', 'max': '1279px' },
-                'lg': { 'min': '1280px', 'max': '5768px' }
+                'lg': { 'min': '1280px', 'max': '1599px' },
+                'xl': { 'min': '1600px', 'max': '5768px' },
             },
             transitionDuration: {
                 'text': '300ms',
@@ -54,8 +55,11 @@ export default {
             scale: {
                 '102': '102%',
             }, boxShadow: {
-                'play': '5px 5px 20px rgba(0, 0, 0, .5);',
-                'cover' : '0px 0 20px rgba(0, 0, 0, .2);',
+                'play': '5px 5px 20px rgba(0, 0, 0, .8)',
+                'cover': '0px 0 20px rgba(0, 0, 0, .4)',
+            }, gridTemplateColumns: {
+                'most-header-sm': 'repeat(2, minmax(188px, 1fr))',
+                'most-header-lg': 'repeat(4, minmax(188px, 1fr))'
             }
         },
     },
