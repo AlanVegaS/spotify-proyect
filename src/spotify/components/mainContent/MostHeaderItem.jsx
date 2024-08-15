@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 export const MostHeaderItem = ({ img, name }) => {
     return (
-        <article className="h-12 lg:h-14 xl:h-20 flex justify-between bg-traslucid-1 rounded-sm items-center group hover:bg-traslucid-2 transition-all duration-500">
-            <div className="h-full flex items-center">
+        <article className="h-12 lg:h-14 xl:h-20 flex justify-between cursor-pointer bg-l-traslucid-1 dark:bg-traslucid-1 hover:bg-l-traslucid-2 dark:hover:bg-traslucid-2 rounded-sm items-center group transition-all duration-500 text-l-text-primary dark:text-text-primary">
+            <div className="h-full flex items-center truncate">
                 <img className="h-full rounded-sm group-hover:shadow-cover transition-shadow duration-text" src={img} alt="cover" />
                 <p className="font-bold ml-sm truncate">{name}</p>
             </div>

@@ -4,12 +4,20 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    darkMode: "class",
     theme: {
         extend: {
             colors: {
-                'deep-black': '#000000',
-                'deep-gray': '#121212',
-                'text-gray': '#b3b3b3',
+                'base-primary': '#000000',
+                'l-base-primary': '#d7d7d7',
+                'base-secondary': '#121212',
+                'l-base-secondary': '#e7e7e7',
+                'text-primary': '#ffffff',
+                'l-text-primary': 'rgb(43, 43, 43)',
+                'text-secondary': '#b3b3b3',
+                'l-text-secondary': '#636363',
+                'hover-card': '#202020',
+                'l-hover-card': '#b3b3b3',
                 'base-green': '#1ed760',
                 'text-green': '#169c46',
                 'invalid': '#e91429',
@@ -18,6 +26,10 @@ export default {
                 'hover-shadow': 'rgba(0,0,0,.5)',
                 'traslucid-1': 'hsla(0,0%,100%,.1)',
                 'traslucid-2': 'hsla(0,0%,100%,.2)',
+                'traslucid-5': 'hsla(0,0%,0%,.5)',
+                'l-traslucid-1': 'hsla(0,0%,50%,.1)',
+                'l-traslucid-2': 'hsla(0,0%,50%,.2)',
+                'l-traslucid-5': 'hsla(0,0%,50%,.5)',
             },
             borderRadius: {
                 'base-field': '9999px',
@@ -60,6 +72,15 @@ export default {
             }, gridTemplateColumns: {
                 'most-header-sm': 'repeat(2, minmax(188px, 1fr))',
                 'most-header-lg': 'repeat(4, minmax(188px, 1fr))'
+            }, animation: {
+                wiggle: 'wiggle 1s ease-in-out',
+            }, keyframes: {
+                wiggle: {
+                    '0%': { transform: 'rotateY(0deg)' },
+                    '100%': {
+                        transform: 'rotateY(-180deg)'
+                    }
+                }
             }
         },
     },
