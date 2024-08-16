@@ -71,7 +71,10 @@ export default {
                 'cover': '0px 0 20px rgba(0, 0, 0, .4)',
             }, gridTemplateColumns: {
                 'most-header-sm': 'repeat(2, minmax(188px, 1fr))',
-                'most-header-lg': 'repeat(4, minmax(188px, 1fr))'
+                'most-header-lg': 'repeat(4, minmax(188px, 1fr))',
+                'catalog-content': 'repeat(auto-fill, minmax(180px, 1fr))',
+            },gridTemplateRows: {
+                'catalog-content': '1fr',
             }, animation: {
                 wiggle: 'wiggle 1s ease-in-out',
             }, keyframes: {

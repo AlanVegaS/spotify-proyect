@@ -1,4 +1,4 @@
-import { Header, MostHeader } from "../components/mainContent/";
+import { Header, MostHeader, Catalog } from "../components/mainContent/";
 
 export const MainContent = () => {
   return (
@@ -6,6 +6,7 @@ export const MainContent = () => {
       <div className="bg-gradient-to-b from-fuchsia-200 dark:from-fuchsia-900 rounded-lg">
         <Header></Header>
         <MostHeader></MostHeader>
+        <Catalog category={'Artist'}></Catalog>
       </div>
     </main>
   );
