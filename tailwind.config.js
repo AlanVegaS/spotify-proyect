@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+import { configUi } from './src/spotify/ui/config';
+
+const { uiSize } = configUi();
+
 export default {
     content: [
         "./index.html",
@@ -55,11 +59,8 @@ export default {
             margin: {
                 'sm': '0.5rem',
             },
-            screens: {/* Sizes also in 'tailwind.config.js' */
-                'sm': { 'min': '10px', 'max': '964px' },
-                'md': { 'min': '965px', 'max': '1279px' },
-                'lg': { 'min': '1280px', 'max': '1599px' },
-                'xl': { 'min': '1600px', 'max': '5768px' },
+            screens: {/* Sizes also in src/styles */
+                uiSize,
             },
             transitionDuration: {
                 'text': '300ms',
