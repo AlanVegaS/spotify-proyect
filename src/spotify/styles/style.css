@@ -19,7 +19,7 @@
 @media ((min-width: 965px) and (max-width: 1280px)) {
     .grid-layout {
         grid-template: 'side main' 1fr
-            'footer footer' 5.5em/ 30% 1fr;
+            'footer footer' 5.5em/ 31% 1fr;
     }
 }
 

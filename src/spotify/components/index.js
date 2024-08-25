@@ -1,2 +1,2 @@
-export * from './library/Home';
-export * from './Library';
+export * from './library/';
+export * from './mainContent';

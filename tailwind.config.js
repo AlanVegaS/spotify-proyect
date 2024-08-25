@@ -1,7 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import { configUi } from './src/spotify/ui/config';
-
-const { uiSize } = configUi();
 
 export default {
     content: [
@@ -60,7 +57,10 @@ export default {
                 'sm': '0.5rem',
             },
             screens: {/* Sizes also in src/styles */
-                uiSize,
+                'sm': { 'min': '10px', 'max': '964px' },
+                'md': { 'min': '965px', 'max': '1279px' },
+                'lg': { 'min': '1280px', 'max': '1599px' },
+                'xl': { 'min': '1600px', 'max': '5768px' },
             },
             transitionDuration: {
                 'text': '300ms',
@@ -71,10 +71,10 @@ export default {
                 'play': '5px 5px 20px rgba(0, 0, 0, .8)',
                 'cover': '0px 0 20px rgba(0, 0, 0, .4)',
             }, gridTemplateColumns: {
-                'most-header-sm': 'repeat(2, minmax(188px, 1fr))',
-                'most-header-lg': 'repeat(4, minmax(188px, 1fr))',
-                'catalog-content': 'repeat(auto-fill, minmax(180px, 1fr))',
-            },gridTemplateRows: {
+                'most-header-sm': 'repeat(2, minmax(180px, 1fr))',
+                'most-header-lg': 'repeat(4, minmax(190px, 1fr))',
+                'catalog-content': 'repeat(auto-fill, minmax(165px, 1fr))',
+            }, gridTemplateRows: {
                 'catalog-content': '1fr',
             }, animation: {
                 wiggle: 'wiggle 1s ease-in-out',
