@@ -55,16 +55,14 @@ export const MainContent = () => {
   }
 
   return (
-    <main className="bg-l-base-secondary dark:bg-base-secondary main rounded-lg">
-      <div className="bg-gradient-to-b from-fuchsia-200 dark:from-fuchsia-900 rounded-lg">
-        <Header></Header>
-        <div className="overflow-y-auto">
-          <MostHeader></MostHeader>
-          <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-          <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-          <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-          <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-        </div>
+    <main className="main flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto">
+      <Header></Header>
+      <div className="grow overflow-y-scroll">
+        <MostHeader></MostHeader>
+        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
+        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
+        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
+        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
       </div>
     </main>
   );

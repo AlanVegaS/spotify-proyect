@@ -12,7 +12,6 @@ export const Catalog = ({ category, contenList }) => {
 
             const numItems = Math.round(width / 205);
             setnumberCards(numItems);
-            console.log(`${width} / 130 ${numItems}`);
         };
 
         const observer = new ResizeObserver(handleResize);
