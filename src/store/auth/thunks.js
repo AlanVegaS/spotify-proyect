@@ -1,11 +1,32 @@
 import axios from "axios";
-import { saveToken } from './';
+import { login, saveToken } from './';
 
-export const getAuthToken = () => {
+export const startLogin = () => {
+    console.log('start login');
     return async (dispatch, getState) => {
-        const resp = await axios.get('https://auth-spotify.netlify.app/.netlify/functions/index/auth/spotify/token');
-        console.log('token: ' + resp.data.access_token);
-        
-        dispatch(saveToken(resp.data.access_token))
+        try {
+            const userName = localStorage.getItem('userName');
+            if (userName) {
+                dispatch(login(userName));
+
+                const tokenAuth = localStorage.getItem('tokenAuth');
+                if (!tokenAuth) {
+                    const token = await getNewToken();
+                    dispatch(saveToken(token));
+                } else {
+                    dispatch(saveToken(tokenAuth));
+                }
+            }
+        } catch (error) {
+            console.log('Error in login');
+        }
     };
+};
+
+export const getNewToken = async () => {
+    console.log('getToken');
+    const resp = await axios.get('https://auth-spotify.netlify.app/.netlify/functions/index/auth/spotify/token');
+    console.log('New token: ' + resp.data.access_token);
+    localStorage.setItem('tokenAuth', resp.data.access_token);
+    return resp.data.access_token
 };

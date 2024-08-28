@@ -1,15 +1,18 @@
 import axios from "axios";
-import { getAuthToken } from "../store/auth";
+import { getNewToken, saveToken } from "../store/auth";
 import { store } from "../store/";
 
-const spotifyApi = axios.create({
-    baseURL: 'https://api.spotify.com/v1/',
-    headers: {
-        'Authorization': `Bearer ${store.getState().auth.tokenAuth}`
-    }
-});
+const spotifyApi = () => {
+    console.log('current token: ' + store.getState().auth.tokenAuth);
+    return axios.create({
+        baseURL: 'https://api.spotify.com/v1/',
+        headers: {
+            'Authorization': `Bearer ${store.getState().auth.tokenAuth}`
+        }
+    });
+}
 
-spotifyApi.interceptors.response.use(
+spotifyApi().interceptors.response.use(
     (response) => {
         return response
     },
@@ -17,16 +20,15 @@ spotifyApi.interceptors.response.use(
         console.log('error ' + error);
         const originalRequest = error.config;
         console.log('Token exp: ' + store.getState().auth.tokenAuth);
-        
 
         if (error.response.status === 401 && !originalRequest._retry) {//expired token
             console.log('expired token');
+
             originalRequest._retry = true;
+            const newToken = await getNewToken();
+            store.dispatch(saveToken(newToken));
 
-            await store.dispatch(getAuthToken());
-
-            originalRequest.headers['Authorization'] = `Bearer ${store.getState().auth.tokenAuth}`;
-
+            originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
             return spotifyApi(originalRequest);
         }
         return Promise.reject(error);
