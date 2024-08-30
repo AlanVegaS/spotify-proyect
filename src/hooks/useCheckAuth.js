@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../store/auth/';
+import { startLoadPlaylists } from '../store/spotify/';
 import { useEffect } from 'react';
 
 export const useCheckAuth = () => {
@@ -11,7 +12,8 @@ export const useCheckAuth = () => {
         const userName = localStorage.getItem('userName');
 
         if (userName) {
-            dispatch(startLogin(userName));
+            dispatch(startLogin());
+            dispatch(startLoadPlaylists());
         }
     }, []);
 

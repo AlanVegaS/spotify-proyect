@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Header, MostHeader, Catalog } from "../components/mainContent";
+import { getContentCatalog } from "../../helpers/getContentCatalog";
 
 export const MainContent = () => {
 
@@ -49,6 +51,22 @@ export const MainContent = () => {
     }
   ];
 
+  const [topArtists, setTopArtists] = useState([]);
+  const [topPlaylists, setTopPlaylists] = useState([]);
+  const [topPodcast, setPodcast] = useState([]);
+
+  useEffect(() => {
+    const callGetContent = async () => {
+      const content = await getContentCatalog();
+      console.log(content);
+      setTopArtists(content.artists.items);
+      setTopPlaylists(content.playlists.items);
+      setPodcast(content.shows.items);
+    }
+
+    callGetContent();
+  }, []);
+
   const C1 = {
     category: 'Artists',
     constentList
@@ -59,9 +77,9 @@ export const MainContent = () => {
       <Header></Header>
       <div className="grow overflow-y-scroll">
         <MostHeader></MostHeader>
-        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
-        <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
+        <Catalog category="Top artists" contenList={topArtists} key="Top artists"></Catalog>
+        <Catalog category="Best playlist" contenList={topPlaylists} key="Best playlist"></Catalog>
+        <Catalog category="Discover new shows" contenList={topPodcast} key="Discover new shows"></Catalog>
         <Catalog category={C1.category} contenList={C1.constentList} key={C1.category}></Catalog>
       </div>
     </main>

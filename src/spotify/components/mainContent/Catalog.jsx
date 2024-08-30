@@ -29,9 +29,9 @@ export const Catalog = ({ category, contenList }) => {
             <h2 className="font-bold text-2xl cursor-default">{category}</h2>
             <section className='mt-3 grid grid-rows-catalog-content' style={{ gridTemplateColumns: `repeat(${numberCards}, minmax(165px, 1fr))` }}>
                 {
-                    contenList.slice(0, numberCards).map(contentCard =>
+                    contenList.slice(0, numberCards).map(contentCard => (
                         <ContentCard key={contentCard.name} {...contentCard}></ContentCard>
-                    )
+                    ))
                 }
             </section>
         </section >

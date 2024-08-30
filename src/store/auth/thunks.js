@@ -1,5 +1,7 @@
 import axios from "axios";
 import { login, saveToken } from './';
+import { store } from "../store";
+import spotifyApi from "../../api/axiosConfig";
 
 export const startLogin = () => {
     console.log('start login');
@@ -28,5 +30,6 @@ export const getNewToken = async () => {
     const resp = await axios.get('https://auth-spotify.netlify.app/.netlify/functions/index/auth/spotify/token');
     console.log('New token: ' + resp.data.access_token);
     localStorage.setItem('tokenAuth', resp.data.access_token);
+    store.dispatch(saveToken(resp.data.access_token));
     return resp.data.access_token
 };

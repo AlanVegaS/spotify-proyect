@@ -1,1 +1,1 @@
-export * from './loadPlaylists';
+export * from './getContentCatalog';

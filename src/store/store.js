@@ -6,6 +6,6 @@ import { spotifySlice } from './spotify/spotifySlice';
 export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
-        spotify: spotifySlice,
+        spotify: spotifySlice.reducer,
     }
 });

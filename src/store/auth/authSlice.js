@@ -5,7 +5,7 @@ export const authSlice = createSlice({
     initialState: {
         status: 'not-authenticated',//not-authenticated, authenticated
         userName: null,
-        tokenAuth: null,
+        tokenAuth: null
     },
     reducers: {
         login: (state, { payload }) => {

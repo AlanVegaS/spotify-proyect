@@ -1,20 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { LibraryItem } from '.';
-import { getPlaylists } from '../../../helpers/loadPlaylists';
 
 export const Library = () => {
 
-    const [itemsLibrary, setItemsLibrary] = useState([]);
-
-    useEffect(() => {
-        const callLoadPlaylist = async () => {
-                const items = await getPlaylists();
-                setItemsLibrary(await items);
-                console.log(await items);
-        };
-
-        callLoadPlaylist();
-    }, []);
+    const { itemsLibrary } = useSelector(state => state.spotify);
 
     return (
         <section className="bg-l-base-secondary dark:bg-base-secondary w-full h-full rounded-md overflow-y-scroll">
