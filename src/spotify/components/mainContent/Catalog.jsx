@@ -25,12 +25,12 @@ export const Catalog = ({ category, contenList }) => {
     }, [contenList]);
 
     return (
-        <section className="p-lg text-l-text-primary dark:text-text-primary" ref={sectionSizeRef}>
+        <section className="p-md text-l-text-primary dark:text-text-primary" ref={sectionSizeRef}>
             <h2 className="font-bold text-2xl cursor-default">{category}</h2>
             <section className='mt-3 grid grid-rows-catalog-content' style={{ gridTemplateColumns: `repeat(${numberCards}, minmax(165px, 1fr))` }}>
                 {
                     contenList.slice(0, numberCards).map(contentCard => (
-                        <ContentCard key={contentCard.name} {...contentCard}></ContentCard>
+                        <ContentCard key={contentCard.id} {...contentCard}></ContentCard>
                     ))
                 }
             </section>
