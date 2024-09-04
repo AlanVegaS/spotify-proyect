@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getNewToken } from "../store/auth";
 import { store } from "../store/";
 
 const spotifyApi = () => {
@@ -21,14 +20,14 @@ const spotifyApi = () => {
             const originalRequest = error.config;
             console.log('Token exp: ' + store.getState().auth.tokenAuth);
 
-            if (error.response.status === 401 && !originalRequest._retry) {//expired token
+            /*if (error.response.status === 401 && !originalRequest._retry) {//expired token
                 console.log('expired token');
 
                 originalRequest._retry = true;
                 const newToken = await getNewToken();
                 originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
                 return spotifyApi(originalRequest);
-            }
+            }*/
             return Promise.reject(error);
         }
     );

@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { Header, MostHeader, Catalog } from "../components/mainContent";
-import { getContentCatalog } from "../../helpers/getContentCatalog";
+import { useGetCatalogsQuery } from "../../store/api/";
 
 export const MainContent = () => {
+
+  const { data } = useGetCatalogsQuery();
 
   const [topArtists, setTopArtists] = useState(null);
   const [topPlaylists, setTopPlaylists] = useState(null);
   const [topPodcast, setPodcast] = useState(null);
 
   useEffect(() => {
-    const callGetContent = async () => {
-      const content = await getContentCatalog();
-      setTopArtists(content.artists.items);
-      setTopPlaylists(content.playlists.items);
-      setPodcast(content.shows.items);
+    const content = data
+    if (data) {
+      setTopArtists(content.artists?.items);
+      setTopPlaylists(content.playlists?.items);
+      setPodcast(content.shows?.items);
     }
-
-    callGetContent();
-  }, []);
+  }, [data]);
 
   return (
     <main className="main flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto">

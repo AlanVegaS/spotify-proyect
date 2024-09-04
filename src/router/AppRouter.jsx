@@ -1,10 +1,10 @@
 import { AuthRouter } from "../auth/router/AuthRouter";
 import { SpotifyRouter } from "../spotify/router/SpotifyRouter";
-import { useCheckAuth } from "../hooks/useCheckAuth";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const AppRouter = () => {
-    const statusAuth = useCheckAuth();
+    const { status: statusAuth } = useSelector((state) => state.auth);
 
     const homeRoutes = [
         {

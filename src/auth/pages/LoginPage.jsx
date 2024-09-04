@@ -3,19 +3,17 @@ import { startLogin } from '../../store/auth';
 import { useForm } from '../hooks/useForm';
 
 export const LoginPage = () => {
-  const { formState, onInputChange, validState, setvalidState } = useForm();
+  const { formState: userName, onInputChange, validState, setvalidState } = useForm();
 
   const dispatch = useDispatch();
 
   const onSubmit = () => {
     event.preventDefault();
 
-    if (formState.length > 3) {
-      localStorage.setItem('userName', formState);
-      dispatch(startLogin());
-    }
+    if (userName.length > 3)
+      dispatch(startLogin(userName));
     else setvalidState(false);
-  };
+  }
 
   return (
     <>
