@@ -20,7 +20,7 @@ export const Library = () => {
                 <div>
                     {
                         itemsLibrary.map(item => (
-                            <LibraryItem img={item.images[0].url} name={item.name} type={item.type} key={item.name}></LibraryItem>
+                            <LibraryItem img={item.images[0].url} {...item} key={item.id}></LibraryItem>
                         ))
                     }
                 </div>

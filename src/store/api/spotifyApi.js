@@ -42,7 +42,7 @@ export const spotifyApi = createApi({
             query: () => 'search?q=top&type=artist%2Cplaylist%2Cshow&market=US&limit=10'
         }),
         getLibraryMostHeaderContent: builder.query({
-            query: () => 'browse/featured-playlists?market=US&fields=playlists%28items%28name%2Ctype%2Cimages%29%29&limit=28'
+            query: () => 'browse/featured-playlists?market=US&fields=playlists%28items%28name%2Ctype%2Cimages%2Cid%29%29&limit=28'
         }),
     })
 });

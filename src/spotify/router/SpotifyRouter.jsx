@@ -8,7 +8,15 @@ export const SpotifyRouter = [
         element: <SpotifyLayout />,
     },
     {
-        path: "home",
+        path: "playlist/:id",
+        element: <SpotifyLayout />,
+    },
+    {
+        path: "artist/:id",
+        element: <SpotifyLayout />,
+    },
+    {
+        path: "show/:id",
         element: <SpotifyLayout />,
     },
     {
