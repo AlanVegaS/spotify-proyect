@@ -15,20 +15,20 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
 
     if (result.error?.status === 401) {
+        console.log('Error 401');
         const newToken = await getNewToken();
         api.dispatch(saveToken(newToken));
         localStorage.setItem('tokenAuth', newToken);
-
         result = await baseQuery(
             {
-                ...args,
+                url: args,
                 headers: {
                     ...args.headers,
                     Authorization: `Bearer ${newToken}`,
                 },
-                api,
-                extraOptions
-            }
+            },
+            api,
+            extraOptions
         );
     }
     return result;
