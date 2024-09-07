@@ -2,7 +2,7 @@ import { ContentTable } from './';
 
 export const ShowContent = () => {
     return (
-        <div className="text-l-text-primary dark:text-text-primary p-lg">
+        <div className="text-l-text-primary dark:text-text-primary p-lg overflow-y-scroll">
             <div className="flex min-w-[426px]">
                 <div className="mr-3 flex items-center sm:w-36 md:w-1/4 w-64 group">
                     <img className="w-full aspect-square" src="https://i.scdn.co/image/ab67616d00004851a7292b6863258e889b78d787" alt="cover" />
