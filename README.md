@@ -19,8 +19,23 @@ Este es un clon de Spotify desarrollado como un proyecto personal con React, Red
 - **Tailwind CSS**: Framework de CSS utility-first para crear diseños responsivos y modernos.
 - **React Router DOM**: Librería para la navegación en aplicaciones de una sola página (SPA).
 
+## 🚀 Demo
+👉 Ver Demo en Vivo
+
+## ⚙️ Funcionalidades
+Este proyecto incluye las siguientes características:
+
+- 🔍 Búsqueda de artistas, playlists y shows.
+- 🗄️ Manejo del estado global con Redux.
+- 📡 Integración con la API de Spotify (con autenticación por token).
+- ❌ No reproduce contenido multimedia.
+
 ## 📬 Contacto
 Si tienes preguntas o comentarios, siéntete libre de contactarme en alan.vega@outlook.es
+
+## ✨ Mejoras Potenciales
+- Reproducción completa de canciones y listas de reproducción.
+- Responsive design mejorado para una experiencia móvil optimizada.
 
 ## 🎯 Recursos Adicionales
 Documentación de la API de Spotify: https://developer.spotify.com/documentation/web-api/
