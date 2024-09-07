@@ -1,29 +1,41 @@
-🎶 Spotify Clone 🎶
-¡Bienvenido a Spotify Clone, un proyecto inspirado en la experiencia de usuario de Spotify! Este proyecto fue desarrollado con el stack de tecnologías modernas para crear una experiencia interactiva y receptiva.
+# Spotify Clone 🎧
 
-🚀 Demo
-👉 Ver Demo en Vivo (agrega aquí el link si tienes una demo desplegada)
+Este es un clon de Spotify desarrollado como un proyecto personal con React, Redux y Tailwind CSS. El objetivo principal es recrear la experiencia de usuario de Spotify y explorar el uso de herramientas modernas de desarrollo frontend.
 
-📷 Capturas de Pantalla
-Agrega aquí capturas de pantalla del proyecto (puedes incluir secciones como la página principal, la vista de una playlist, etc.)
+## Características 🚀
 
-📚 Tecnologías y Librerías Utilizadas
-Este proyecto fue desarrollado usando una serie de tecnologías y librerías de frontend:
+- 🎵 Navegación por catálogos de música (artistas, playlists, shows)
+- 📱 Diseño responsive utilizando **Tailwind CSS**
+- 🔥 Estado global manejado con **Redux** y peticiones HTTP optimizadas con **RTK Query**
+- 🌐 Interacción con la API de Spotify
+- 🎨 Interfaz de usuario similar a la de Spotify
 
-React: Una librería para construir interfaces de usuario.
-Redux Toolkit: Manejo eficiente del estado global.
-React Router DOM: Navegación dinámica dentro de la aplicación.
-Axios: Librería para hacer peticiones HTTP.
-Vite: Un entorno de desarrollo rápido y ligero.
-Tailwind CSS: Framework de estilos para desarrollar una UI moderna.
-ESLint: Linter para mantener un código limpio y consistente.
-PostCSS: Herramienta para transformar estilos con JavaScript.
-PropTypes: Validación de los tipos de datos de los props en los componentes de React.
-⚙️ Funcionalidades
-Este proyecto incluye las siguientes características:
+## Tecnologías Utilizadas 🛠
 
-🔍 Búsqueda de artistas, playlists y shows.
-🎧 Reproducción de contenido multimedia.
-🎵 Explorar playlists destacadas.
-🗄️ Manejo del estado global con Redux.
-📡 Integración con la API de Spotify (con autenticación por token).
+- **React**: Biblioteca de JavaScript para la construcción de interfaces de usuario.
+- **Redux**: Manejador de estado global para aplicaciones JavaScript.
+- **RTK Query**: Herramienta para el manejo de peticiones HTTP y caché optimizado.
+- **Axios**: Cliente HTTP basado en promesas para realizar las peticiones a la API.
+- **Tailwind CSS**: Framework de CSS utility-first para crear diseños responsivos y modernos.
+- **React Router DOM**: Librería para la navegación en aplicaciones de una sola página (SPA).
+
+## 📬 Contacto
+Si tienes preguntas o comentarios, siéntete libre de contactarme en alan.vega@outlook.es
+
+## 🎯 Recursos Adicionales
+Documentación de la API de Spotify: https://developer.spotify.com/documentation/web-api/
+
+## Librerías Usadas 📦
+Aquí te dejo una lista de las librerías clave que se usaron en este proyecto:
+
+```json
+{
+  "@reduxjs/toolkit": "^2.2.7",
+  "axios": "^1.7.5",
+  "prop-types": "^15.8.1",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-redux": "^9.1.2",
+  "react-router-dom": "^6.26.0",
+  "tailwindcss": "^3.4.7"
+}
