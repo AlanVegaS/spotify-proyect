@@ -44,7 +44,21 @@ export const spotifyApi = createApi({
         getLibraryMostHeaderContent: builder.query({
             query: () => 'browse/featured-playlists?market=US&fields=playlists%28items%28name%2Ctype%2Cimages%2Cid%29%29&limit=28'
         }),
+        getTopTracksArtist: builder.query({
+            query: (id) => `artists/${id}/top-tracks`
+        }),
+        getTracksPlaylist: builder.query({
+            query: (id) => `playlists/${id}/tracks`
+        }),
+        getEpisodesShows: builder.query({
+            query: (id) => `shows/${id}/episodes`
+        }),
     })
 });
 
-export const { useGetCatalogsQuery, useGetLibraryMostHeaderContentQuery } = spotifyApi;
+export const { useGetCatalogsQuery,
+    useGetLibraryMostHeaderContentQuery,
+    useGetTopTracksArtistQuery,
+    useGetTracksPlaylistQuery,
+    useGetEpisodesShowsQuery
+} = spotifyApi;

@@ -17,8 +17,8 @@ export default {
                 'l-text-primary': 'rgb(43, 43, 43)',
                 'text-secondary': '#b3b3b3',
                 'l-text-secondary': '#636363',
-                'hover-card': '#202020',
-                'l-hover-card': '#b3b3b3',
+                'hover-card': 'rgba(255, 255, 255, 0.1)',
+                'l-hover-card': 'rgba(0,0,0,.2)',
                 'base-green': '#1ed760',
                 'text-green': '#169c46',
                 'invalid': '#e91429',
@@ -74,6 +74,7 @@ export default {
                 'most-header-sm': 'repeat(2, minmax(180px, 1fr))',
                 'most-header-lg': 'repeat(4, minmax(190px, 1fr))',
                 'catalog-content': 'repeat(auto-fill, minmax(165px, 1fr))',
+                'table-content': '60px,1fr,80px',
             }, gridTemplateRows: {
                 'catalog-content': '1fr',
             }, animation: {

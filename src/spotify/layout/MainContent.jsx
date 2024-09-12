@@ -12,8 +12,8 @@ export const MainContent = () => {
   const [topPodcast, setPodcast] = useState(null);
 
   useEffect(() => {
-    const content = data
-    if (data) {
+    const content = data;
+    if (content) {
       setTopArtists(content.artists?.items);
       setTopPlaylists(content.playlists?.items);
       setPodcast(content.shows?.items);
