@@ -6,18 +6,10 @@ export const spotifySlice = createSlice(
         initialState: {
             currentSong: '',
             isPlaying: '',
-            contentShowed: {},
             itemsLibrary: [],
             itemsMostHeaders: [],
         },
         reducers: {
-            setContentShowed: (state, { payload }) => {
-                state.contentShowed = {
-                    contentType: payload.contentType,
-                    name: payload.name,
-                    info: payload.info
-                }
-            },
             setLibrary: (state, { payload }) => {
                 state.itemsLibrary = payload;
             },

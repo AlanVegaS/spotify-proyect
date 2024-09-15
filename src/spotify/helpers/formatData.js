@@ -14,35 +14,53 @@ const formatMsToHoursMin = (ms) => {
     return `${hours ? hours + ' h' : ''} ${minutes} m`;
 };
 
-export const formatDataEpisodes = (items) => {
-    return items.map(item => ({
+export const formatDataEpisodes = (data) => {
+    const items = data.episodes.items;
+    const name = data.name;
+    const contentType = 'Show';
+    const img = data.images?.[1]?.url ? data.images[1].url : data.images?.[0]?.url;
+    const info = `${data.total_episodes} episodes `;
+    const id = data.id;
+    const contentList = items.map(item => ({
         audio: item.audio_preview_url,
         name: item.name,
         img: item.images?.[3] ? item.images[3].url : item.images?.[0]?.url,
         duration: formatMsToHoursMin(item.duration_ms),
         info: item.type,
         id: item.id
-    }))
+    }));
+
+    return { id, name, contentType, img, info, contentList }
 };
 
-export const formatDataTracksArtist = (items) => {
-    return items.map(item => ({
+export const formatDataTracksArtist = (data) => {
+    const contentList = data.items.map(item => ({
         audio: item.preview_url,
         name: item.name,
         img: item.album.images?.[3] ? item.album.images[3].url : item.album.images?.[0]?.url,
         duration: formatMsToMinSec(item.duration_ms),
         info: item.album.artists.map(artist => artist.name).join(', '),
         id: item.id
-    }))
+    }));
+
+    return { ...data, contentList }
 };
 
-export const formatDataTracksPlaylist = (items) => {
-    return items.map(item => ({
+export const formatDataTracksPlaylist = (data) => {
+    const items = data.tracks.items;
+    const id = data.id;
+    const name = data.name;
+    const contentType = 'Playlist';
+    const img = data.images[0].url;
+    const info = `${data.tracks.total} songs `
+    const contentList = items.map(item => ({
         audio: item.track?.preview_url,
         name: item.track.name,
         img: item.track.album.images?.[3] ? item.track.album.images[3].url : item.track.album.images?.[0]?.url,
         duration: formatMsToMinSec(item.track.duration_ms),
         info: item.track.album.artists.map(artist => artist.name).join(','),
         id: item.track.id
-    }))
+    }));
+
+    return { id, name, contentType, img, info, contentList }
 };

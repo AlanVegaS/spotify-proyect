@@ -12,6 +12,7 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
+    console.log(args);
     let result = await baseQuery(args, api, extraOptions);
 
     if (result.error?.status === 401) {
@@ -48,17 +49,21 @@ export const spotifyApi = createApi({
             query: (id) => `artists/${id}/top-tracks`
         }),
         getTracksPlaylist: builder.query({
-            query: (id) => `playlists/${id}/tracks`
+            query: (id) => `playlists/${id}`
         }),
         getEpisodesShows: builder.query({
-            query: (id) => `shows/${id}/episodes`
+            query: (id) => `shows/${id}`
+        }),
+        getInfoArtist: builder.query({
+            query: (id) => `artists/${id}`
         }),
     })
 });
 
 export const { useGetCatalogsQuery,
+    useGetTracksPlaylistQuery,
     useGetLibraryMostHeaderContentQuery,
     useGetTopTracksArtistQuery,
-    useGetTracksPlaylistQuery,
-    useGetEpisodesShowsQuery
+    useGetEpisodesShowsQuery,
+    useGetInfoArtistQuery
 } = spotifyApi;

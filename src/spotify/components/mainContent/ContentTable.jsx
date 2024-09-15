@@ -1,24 +1,6 @@
-import { useSelector } from "react-redux"
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useGetContent } from "../../hooks/";
+import PropTypes from 'prop-types';
 
-export const ContentTable = () => {
-    const { itemsLibrary } = useSelector(state => state.spotify);
-
-    const { pathname } = useLocation();
-    const segments = pathname.split('/');
-    const entity = segments[1];
-    const ID = segments[2];
-
-    const { contentList } = useGetContent(entity, ID);
-
-
-    useEffect(() => {
-        
-    }, [contentList]);
-
-
+export const ContentTable = ({ contentList }) => {
     return (
         <div className="fill-base-primary dark:fill-text-primary">
             <div className="grid grid-cols-table-content h-7 m-4 ml-sm border-b-l-text-secondary border-solid border-b">
@@ -45,4 +27,8 @@ export const ContentTable = () => {
             ))}
         </div>
     )
+};
+
+ContentTable.proptypes = {
+    contentList: PropTypes.array.isRequired,
 };
