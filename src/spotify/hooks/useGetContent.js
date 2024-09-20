@@ -4,7 +4,6 @@ import { formatDataEpisodes, formatDataTracksArtist, formatDataTracksPlaylist } 
 import { useGetArtistInfo } from '../hooks';
 
 export const useGetContent = (typeContent, id) => {
-    //console.log(`info ${typeContent} ID ${id}`);
     const queryMapping = {
         artist: useGetArtistInfo,
         playlist: useGetTracksPlaylistQuery,
@@ -16,10 +15,9 @@ export const useGetContent = (typeContent, id) => {
         show: formatDataEpisodes,
     };
 
-    const { data } = queryMapping[typeContent](id);
+    const { data, isFetching } = queryMapping[typeContent](id);
 
-    if (!data) return { contentList: null };
-    //console.log(data);
+    if (isFetching) return { isFetching };
     const contentInfo = formatMapping[typeContent](data);
 
     return contentInfo;

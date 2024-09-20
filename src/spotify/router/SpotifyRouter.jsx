@@ -20,6 +20,10 @@ export const SpotifyRouter = [
         element: <SpotifyLayout />,
     },
     {
+        path: "search/:term?",
+        element: <SpotifyLayout />,
+    },
+    {
         path: "*",
         element: <Navigate to={"/"} />,
     },

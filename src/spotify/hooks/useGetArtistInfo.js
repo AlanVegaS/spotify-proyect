@@ -3,7 +3,7 @@ import { useGetInfoArtistQuery, useGetTopTracksArtistQuery } from "../../store/a
 
 export const useGetArtistInfo = (idArtist) => {
     const contentList = useGetTopTracksArtistQuery(idArtist);
-    const { data } = useGetInfoArtistQuery(idArtist);
+    const { data, isFetching } = useGetInfoArtistQuery(idArtist);
 
     if (!data || !contentList.data?.tracks) return { data: null };
     const name = data.name;
@@ -13,7 +13,7 @@ export const useGetArtistInfo = (idArtist) => {
     const info = data.genres.join(', ');
     const items = contentList.data?.tracks;
 
-    return { data: { id, name, contentType, img, info, items } };
+    return { data: { id, name, contentType, img, info, items }, isFetching };
 };
 
 useGetArtistInfo.PropTypes = {
