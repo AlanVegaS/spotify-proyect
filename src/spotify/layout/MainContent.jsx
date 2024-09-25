@@ -3,10 +3,10 @@ import { useGetDataUrl } from "../hooks";
 import { Search } from "../components/library";
 
 export const MainContent = () => {
-	const { ID, entity } = useGetDataUrl();
+	const { entity } = useGetDataUrl();
 
 	let content;
-	if (!entity) content = <HomeContent></HomeContent>
+	if (!entity) content = <HomeContent term={'top'} ></HomeContent>
 	else if (entity !== 'search') content = <ShowContent></ShowContent>
 	else if (entity === 'search') content = <Search></Search>
 

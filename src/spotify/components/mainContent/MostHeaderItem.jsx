@@ -24,4 +24,4 @@ MostHeaderItem.propTypes = {
     id: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
-}
+};

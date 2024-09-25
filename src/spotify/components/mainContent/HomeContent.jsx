@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useGetCatalogsQuery } from "../../../store/api";
+import { useGetSearchQuery } from "../../../store/api";
 import { Catalog, MostHeader } from "./";
+import PropTypes from "prop-types";
 
 
-export const HomeContent = () => {
-	const { data } = useGetCatalogsQuery();
+export const HomeContent = ({ term }) => {
+	const { data } = useGetSearchQuery(term);
 
 	const [topArtists, setTopArtists] = useState(null);
 	const [topPlaylists, setTopPlaylists] = useState(null);
@@ -19,10 +20,14 @@ export const HomeContent = () => {
 		}
 	}, [data]);
 
-    return (<div className="grow overflow-y-scroll">
-        <MostHeader></MostHeader>
-        {topPlaylists && <Catalog category="Discover new shows" contenList={topPodcast} key="Discover new shows"></Catalog>}
-        {topArtists && <Catalog category="Top artists" contenList={topArtists} key="Top artists"></Catalog>}
-        {topPodcast && <Catalog category="Best playlists" contenList={topPlaylists} key="Best playlists"></Catalog>}
-    </div>);
+	return (<div className="grow overflow-y-scroll">
+		<MostHeader></MostHeader>
+		{topPlaylists && <Catalog category="Discover new shows" contenList={topPodcast} key="Discover new shows"></Catalog>}
+		{topArtists && <Catalog category="Top artists" contenList={topArtists} key="Top artists"></Catalog>}
+		{topPodcast && <Catalog category="Best playlists" contenList={topPlaylists} key="Best playlists"></Catalog>}
+	</div>);
+};
+
+HomeContent.propTypes = {
+	term: PropTypes.string.isRequired,
 };

@@ -31,6 +31,7 @@ export default {
                 'l-traslucid-1': 'hsla(0,0%,50%,.1)',
                 'l-traslucid-2': 'hsla(0,0%,50%,.2)',
                 'l-traslucid-5': 'hsla(0,0%,50%,.5)',
+                'traslucid-full': 'hsla(0,0%,100%,0)',
             },
             borderRadius: {
                 'base-field': '9999px',
