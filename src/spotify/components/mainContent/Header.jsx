@@ -33,7 +33,7 @@ export const Header = () => {
 
     const onSearch = () => {
         const value = event.target?.value;
-        if (value) navigate(`/search/${event.target.value}`);
+        navigate(`/search/${event.target.value}`);
     };
 
     return (

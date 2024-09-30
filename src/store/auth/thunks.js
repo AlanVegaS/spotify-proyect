@@ -5,7 +5,8 @@ export const startLogin = (user) => {
     console.log('start login');
     return async (dispatch, getState) => {
         dispatch(login(user));
-        const tokenAuth = getNewToken();
+        localStorage.setItem('userName', user);
+        const tokenAuth = await getNewToken();
         dispatch(saveToken(tokenAuth));
         localStorage.setItem('tokenAuth', tokenAuth);
     };

@@ -1,14 +1,13 @@
-import { div } from "framer-motion/m";
 import { useGetDataUrl } from "../../hooks";
-import { HomeContent } from "../mainContent";
+import { SearchContent } from "../mainContent";
 
 export const Search = () => {
 
     const { ID } = useGetDataUrl();
     return (
-        <div>
+        <div className="grow overflow-y-scroll">
             {
-                ID ? <HomeContent term={ID}></HomeContent>
+                ID ? <SearchContent term={ID}></SearchContent>
                     :
                     <div className="flex justify-center items-center text-l-text-secondary dark:text-text-secondary text-5xl">
                         <p className="mt-14">Search for something</p>

@@ -1,19 +1,17 @@
 import { PropTypes } from "prop-types";
 import { useGetInfoArtistQuery, useGetTopTracksArtistQuery } from "../../store/api";
+import { formatDataTracksArtist } from "../helpers/formatData";
 
 export const useGetArtistInfo = (idArtist) => {
-    const contentList = useGetTopTracksArtistQuery(idArtist);
-    const { data, isFetching } = useGetInfoArtistQuery(idArtist);
+    const { data: artistData, isFetching: isFetchingArtis } = useGetInfoArtistQuery(idArtist);
+    const { data: tracksData, isFetching: isFetchingList } = useGetTopTracksArtistQuery(idArtist);
 
-    if (!data || !contentList.data?.tracks) return { data: null };
-    const name = data.name;
-    const contentType = 'Artist';
-    const img = data.images?.[2] ? data.images[2].url : data.images?.[0]?.url;
-    const id = data.id;
-    const info = data.genres.join(', ');
-    const items = contentList.data?.tracks;
+    const isFetching = isFetchingArtis || isFetchingList;
+    if (isFetching) return { isFetching };
 
-    return { data: { id, name, contentType, img, info, items }, isFetching };
+    const formatData = formatDataTracksArtist(artistData, tracksData);
+
+    return { ...formatData, isFetching };
 };
 
 useGetArtistInfo.PropTypes = {

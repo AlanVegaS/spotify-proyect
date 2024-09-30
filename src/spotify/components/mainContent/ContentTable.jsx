@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { TrackItem } from './TrackItem';
 
 export const ContentTable = ({ contentList }) => {
     return (
@@ -11,24 +12,12 @@ export const ContentTable = ({ contentList }) => {
                 </div>
             </div>
             {contentList && contentList.map(item => (
-                <div key={item.id} className="grid grid-cols-table-content hover:bg-l-hover-card dark:hover:bg-hover-card rounded-sm items-center first:justify-items-center ml-sm">
-                    <div className="flex justify-center w-full">
-                        <svg aria-hidden="true" className="h-4" viewBox="0 0 24 24" ><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
-                    </div>
-                    <div className="flex">
-                        <img src={item.img} alt="" className="w-12 max-h-12 rounded-sm mr-sm my-sm" />
-                        <div>
-                            <p className="font-semibold">{item.name}</p>
-                            <p className="font-light">{item.info}</p>
-                        </div>
-                    </div>
-                    <p>{item.duration}</p>
-                </div>
+                <TrackItem key={item.id} {...item}></TrackItem>
             ))}
         </div>
     )
 };
 
-ContentTable.proptypes = {
+ContentTable.propTypes = {
     contentList: PropTypes.array.isRequired,
 };
