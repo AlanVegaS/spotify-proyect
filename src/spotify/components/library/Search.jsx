@@ -1,11 +1,17 @@
 import { useGetDataUrl } from "../../hooks";
 import { SearchContent } from "../mainContent";
+import { motion } from "framer-motion";
 
 export const Search = () => {
 
     const { ID } = useGetDataUrl();
     return (
-        <div className="grow overflow-y-scroll">
+        <motion.div className="grow overflow-y-scroll"
+            animate={{ opacity: 1 }}
+            transition={{
+                duration: 3
+            }}
+        >
             {
                 ID ? <SearchContent term={ID}></SearchContent>
                     :
@@ -13,6 +19,6 @@ export const Search = () => {
                         <p className="mt-14">Search for something</p>
                     </div>
             }
-        </div>
+        </motion.div>
     );
 };

@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 export const LibraryItem = ({ type, name, img, id }) => {
     return (
         <Link to={`/playlist/${id}`}>
-            <figure className="group flex p-sm mx-sm rounded-sm duration-100 cursor-pointer hover:bg-l-hover-card dark:hover:bg-hover-card active:bg-l-base-primary dark:active:bg-base-primary">
+            <motion.figure className="group flex p-sm mx-sm rounded-sm duration-100 cursor-pointer hover:bg-l-hover-card dark:hover:bg-hover-card active:bg-l-base-primary dark:active:bg-base-primary"
+                animate={{ opacity: 1 }}
+                transition={{
+                    duration: .5
+                }}
+            >
                 <div className="h-figure aspect-square relative">
                     <img
                         className={`h-full shadow-cover dark:shadow-play rounded-${type === 'Artist' ? 'base-field' : 'sm'}`}
@@ -17,7 +23,7 @@ export const LibraryItem = ({ type, name, img, id }) => {
                     <p className="font-bold truncate">{name}</p>
                     <p className="font-light">{type}</p>
                 </div>
-            </figure>
+            </motion.figure>
         </Link>
     );
 };

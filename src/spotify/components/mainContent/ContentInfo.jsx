@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { ContentTable } from "./ContentTable";
 import { Loading } from "./";
+import { motion } from "framer-motion";
 
 export const ContentInfo = ({ name, contentType, img, info, contentList, isFetching }) => {
     return (
@@ -8,7 +9,12 @@ export const ContentInfo = ({ name, contentType, img, info, contentList, isFetch
             {
                 isFetching
                     ? <Loading></Loading>
-                    : <div>
+                    : <motion.div
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: .5
+                        }}
+                        initial={{ opacity: 0 }}>
                         <div className="flex min-w-[426px] cursor-default">
                             <div className="mr-3 flex items-center sm:w-36 md:w-1/4 w-64 group">
                                 <img className="w-full aspect-square" src={img} alt="cover" />
@@ -29,7 +35,7 @@ export const ContentInfo = ({ name, contentType, img, info, contentList, isFetch
                             </div>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
-                    </div>
+                    </motion.div>
             }
         </>
     );
