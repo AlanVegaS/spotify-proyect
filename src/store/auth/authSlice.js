@@ -15,6 +15,7 @@ export const authSlice = createSlice({
         logout: (state) => {
             state.status = 'not-authenticated';
             state.userName = null;
+            state.tokenAuth = null;
         },
         saveToken: (state, { payload }) => {
             state.tokenAuth = payload;

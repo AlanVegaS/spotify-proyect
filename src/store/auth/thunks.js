@@ -1,4 +1,4 @@
-import { login, saveToken } from './';
+import { login, saveToken, logout } from './';
 import { getNewToken } from '../../auth/helpers/getNewToken';
 
 export const startLogin = (user) => {
@@ -9,5 +9,14 @@ export const startLogin = (user) => {
         const tokenAuth = await getNewToken();
         dispatch(saveToken(tokenAuth));
         localStorage.setItem('tokenAuth', tokenAuth);
+    };
+};
+
+export const startLogout = () => {
+    console.log('start login');
+    return async (dispatch, getState) => {
+        localStorage.removeItem('userName');
+        localStorage.removeItem('tokenAuth');
+        dispatch(logout());
     };
 };
