@@ -11,3 +11,4 @@ export * from './Loading';
 export * from './ContentInfo';
 export * from './TrackItem';
 export * from './ArtistContent';
+export * from './PlayPauseIcon';

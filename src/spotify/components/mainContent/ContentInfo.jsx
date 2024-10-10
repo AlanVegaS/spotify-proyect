@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { ContentTable } from "./ContentTable";
-import { Loading } from "./";
+import { Loading, PlayPauseIcon } from "./";
 import { motion } from "framer-motion";
 
 export const ContentInfo = ({ name, contentType, img, info, contentList, isFetching }) => {
@@ -27,12 +27,8 @@ export const ContentInfo = ({ name, contentType, img, info, contentList, isFetch
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div className="mt-4 h-16 flex items-center justify-center aspect-square m-sm bg-base-green rounded-full shadow-play transition-all duration-100 hover:scale-102 cursor-pointer">
-                                <svg role="img" aria-hidden="true" viewBox="0 0 24 24" className='h-3/5'>
-                                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
-                                </svg>
-                            </div>
+                        <div className="m-sm mt-4 h-16 flex">
+                            <PlayPauseIcon></PlayPauseIcon>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
                     </motion.div>

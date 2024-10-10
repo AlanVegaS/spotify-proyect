@@ -161,9 +161,9 @@ export const Header = () => {
                         }}
                         style={{ pointerEvents: isOpen ? "auto" : "none" }}
                     >
-                        <motion.li variants={itemVariants} className="ursor-pointer hover:bg-l-traslucid-5 rounded-sm" onClick={onLogout}>Logout</motion.li>
-                        <motion.li variants={itemVariants}>
-                            <a href="https://github.com/AlanVegaS/spotify-proyect" target="_blank" className="p-sm cursor-pointer hover:bg-l-traslucid-5 rounded-sm">{`Alan's github`}</a>
+                        <motion.li variants={itemVariants} className="cursor-pointer hover:bg-l-traslucid-5 rounded-sm p-1" onClick={onLogout}>Logout</motion.li>
+                        <motion.li variants={itemVariants} className="cursor-pointer hover:bg-l-traslucid-5 rounded-sm p-1">
+                            <a href="https://github.com/AlanVegaS/spotify-proyect">{`Alan's github`}</a>
                             </motion.li>
                     </motion.ul>
                 </motion.nav>
