@@ -5,10 +5,16 @@ export const spotifySlice = createSlice(
         name: 'spotify',
         initialState: {
             currentSong: '',
-            isPlaying: '',
             itemsLibrary: [],
             itemsMostHeaders: [],
-            search: ''
+            search: '',
+            contentActive: {
+                idContent: null,
+                idItem: null,
+                currentNumber: null,
+                listItems: null,
+                isPlaying: false
+            }
         },
         reducers: {
             setLibrary: (state, { payload }) => {
@@ -17,10 +23,17 @@ export const spotifySlice = createSlice(
             setMostHeaders: (state, { payload }) => {
                 state.itemsMostHeaders = payload;
             },
-            setSearch: (state, {payload}) => {
+            setSearch: (state, { payload }) => {
                 state.search = payload;
-            }
+            },
+            setContentActive: (state, { payload }) => {
+                state.contentActive = payload;
+                state.contentActive.isPlaying = true;
+            },
+            setPlayPause: (state) => {
+                state.contentActive.isPlaying = !state.contentActive.isPlaying;
+            },
         },
     });
 
-export const { setLibrary, setMostHeaders, setSearch } = spotifySlice.actions;
+export const { setLibrary, setMostHeaders, setSearch, setContentActive, setPlayPause } = spotifySlice.actions;

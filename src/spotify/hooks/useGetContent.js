@@ -14,7 +14,7 @@ export const useGetContent = (typeContent, id) => {
 
     const { data, isFetching } = queryMapping[typeContent](id);
     const contentInfo = formatMapping[typeContent](data, isFetching);
-    return { ...contentInfo, isFetching };
+    return { id, ...contentInfo, isFetching };
 };
 
 useGetContent.PropTypes = {

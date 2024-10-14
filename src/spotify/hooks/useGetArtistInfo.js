@@ -11,7 +11,7 @@ export const useGetArtistInfo = (idArtist) => {
 
     const formatData = formatDataTracksArtist(artistData, tracksData);
 
-    return { ...formatData, isFetching };
+    return { id:idArtist, ...formatData, isFetching };
 };
 
 useGetArtistInfo.PropTypes = {

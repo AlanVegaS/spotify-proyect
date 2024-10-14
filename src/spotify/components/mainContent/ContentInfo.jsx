@@ -2,8 +2,25 @@ import PropTypes from "prop-types";
 import { ContentTable } from "./ContentTable";
 import { Loading, PlayPauseIcon } from "./";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { setContentActive } from "../../../store/spotify/spotifySlice";
 
-export const ContentInfo = ({ name, contentType, img, info, contentList, isFetching }) => {
+export const ContentInfo = ({ id, name, contentType, img, info, contentList, isFetching }) => {
+
+    const dispatch = useDispatch();
+
+    const onPlayContent = (event) => {
+        event.stopPropagation();
+
+        const newContentActive = {
+            idContent: id,
+            idItem: null,
+            currentNumber: null,
+            listItems: null
+        };
+        dispatch(setContentActive(newContentActive));
+    };
+
     return (
         <>
             {
@@ -27,8 +44,10 @@ export const ContentInfo = ({ name, contentType, img, info, contentList, isFetch
                                 </div>
                             </div>
                         </div>
-                        <div className="m-sm mt-4 h-16 flex">
-                            <PlayPauseIcon></PlayPauseIcon>
+                        <div className="m-sm mt-4 h-16 flex"
+                            onClick={onPlayContent}
+                        >
+                            <PlayPauseIcon id={id}></PlayPauseIcon>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
                     </motion.div>
@@ -38,6 +57,7 @@ export const ContentInfo = ({ name, contentType, img, info, contentList, isFetch
 };
 
 ContentInfo.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     contentType: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
