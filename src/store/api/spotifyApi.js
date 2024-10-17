@@ -49,6 +49,8 @@ export const spotifyApi = createApi({
         }),
         getTracksPlaylist: builder.query({
             query: (id) => `playlists/${id}`
+        }), getPlaylist: builder.mutation({
+            query: (id) => `playlists/${id}`
         }),
         getEpisodesShows: builder.query({
             query: (id) => `shows/${id}`
@@ -63,10 +65,12 @@ export const spotifyApi = createApi({
 });
 
 export const { useGetCatalogsQuery,
+    useLazyGetTracksPlaylistQuery,
     useGetTracksPlaylistQuery,
     useGetLibraryMostHeaderContentQuery,
     useGetTopTracksArtistQuery,
     useGetEpisodesShowsQuery,
     useGetInfoArtistQuery,
+    useLazyGetInfoArtistQuery,
     useGetSearchQuery,
 } = spotifyApi;

@@ -34,7 +34,8 @@ export const formatDataEpisodes = (data, isFetching) => {
     return { id, name, contentType, img, info, contentList }
 };
 
-export const formatDataTracksArtist = (artistData, tracksData) => {
+export const formatDataTracksArtist = (artistData, tracksData, isFetching) => {
+    if (isFetching) return null
     const name = artistData.name;
     const contentType = 'Artist';
     const img = artistData.images?.[2] ? artistData.images[2].url : artistData.images?.[0]?.url;

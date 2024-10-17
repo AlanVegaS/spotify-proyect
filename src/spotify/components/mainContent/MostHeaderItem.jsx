@@ -1,28 +1,13 @@
 import PropTypes from 'prop-types';
 import { PlayPauseIcon } from './PlayPauseIcon';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setContentActive } from '../../../store/spotify/spotifySlice';
 
-export const MostHeaderItem = ({ img, name, id }) => {
+export const MostHeaderItem = ({ img, name, id, type }) => {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const toContent = () => {
         navigate(`/playlist/${id}`);
-    };
-
-    const onPlayContent = (event) => {
-        event.stopPropagation();
-
-        const newContentActive = {
-            idContent: id,
-            idItem: null,
-            currentNumber: null,
-            listItems: null
-        };
-        dispatch(setContentActive(newContentActive));
     };
 
     return (
@@ -35,9 +20,9 @@ export const MostHeaderItem = ({ img, name, id }) => {
                 <p className="font-bold ml-sm truncate">{name}</p>
             </div>
             <div className="h-full aspect-square rounded-full opacity-0 transition-opacity duration-text group-hover:opacity-100"
-                onClick={onPlayContent}
+                onClick={(event) => event.stopPropagation()}
             >
-                <PlayPauseIcon id={id}></PlayPauseIcon>
+                <PlayPauseIcon id={id} type={type}></PlayPauseIcon>
             </div>
         </article>
     );
@@ -46,5 +31,6 @@ export const MostHeaderItem = ({ img, name, id }) => {
 MostHeaderItem.propTypes = {
     id: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
 };

@@ -2,25 +2,8 @@ import PropTypes from "prop-types";
 import { ContentTable } from "./ContentTable";
 import { Loading, PlayPauseIcon } from "./";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { setContentActive } from "../../../store/spotify/spotifySlice";
 
 export const ContentInfo = ({ id, name, contentType, img, info, contentList, isFetching }) => {
-
-    const dispatch = useDispatch();
-
-    const onPlayContent = (event) => {
-        event.stopPropagation();
-
-        const newContentActive = {
-            idContent: id,
-            idItem: null,
-            currentNumber: null,
-            listItems: null
-        };
-        dispatch(setContentActive(newContentActive));
-    };
-
     return (
         <>
             {
@@ -45,7 +28,7 @@ export const ContentInfo = ({ id, name, contentType, img, info, contentList, isF
                             </div>
                         </div>
                         <div className="m-sm mt-4 h-16 flex"
-                            onClick={onPlayContent}
+                            onClick={(event) => event.stopPropagation()}
                         >
                             <PlayPauseIcon id={id}></PlayPauseIcon>
                         </div>

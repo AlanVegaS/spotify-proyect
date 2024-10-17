@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { PlayPauseIcon } from './PlayPauseIcon';
-import { useDispatch } from 'react-redux';
-import { setContentActive } from '../../../store/spotify/spotifySlice';
 
 export const ContentCard = ({ images, name, description, type, id }) => {
 
@@ -10,22 +8,9 @@ export const ContentCard = ({ images, name, description, type, id }) => {
     const urlImg = images[1]?.url === true ? images[1].url : images[0]?.url
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const toContent = () => {
         navigate(`/${type}/${id}`);
-    };
-
-    const onPlayContent = (event) => {
-        event.stopPropagation();
-
-        const newContentActive = {
-            idContent: id,
-            idItem: null,
-            currentNumber: null,
-            listItems: null
-        };
-        dispatch(setContentActive(newContentActive));
     };
 
     return (
@@ -36,9 +21,9 @@ export const ContentCard = ({ images, name, description, type, id }) => {
                 <img className={`aspect-square shadow-cover dark:shadow-play ${type === 'artist' ? 'rounded-full' : 'rounded-md'}`} src={urlImg} alt="cover" />
                 <div className="absolute -bottom-2 right-0 h-16 aspect-square m-sm 
                 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 duration-150"
-                    onClick={onPlayContent}
+                    onClick={(event) => event.stopPropagation()}
                 >
-                    <PlayPauseIcon id={id}></PlayPauseIcon>
+                    <PlayPauseIcon id={id} type={type}></PlayPauseIcon>
                 </div>
             </div>
             <div className='h-24 truncate overflow-hidden'>
