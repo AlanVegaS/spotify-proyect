@@ -34,7 +34,25 @@ export const formatDataEpisodes = (data, isFetching) => {
     return { id, name, contentType, img, info, contentList }
 };
 
-export const formatDataTracksArtist = (artistData, tracksData, isFetching) => {
+export const formatDataTracksArtist = (tracksData, isFetching) => {
+    if (isFetching) return null
+    const contentType = 'Artist';
+    const items = tracksData.tracks;
+    const contentList = items.map(item => ({
+        audio: item.preview_url,
+        name: item.name,
+        img: item.album.images?.[3] ? item.album.images[3].url : item.album.images?.[0]?.url,
+        duration: formatMsToMinSec(item.duration_ms),
+        info: item.album.artists.map(artist => artist.name).join(', '),
+        id: item.id
+    }));
+
+    return { contentType, contentList };
+};
+
+export const formatDataTracksArtist1 = (artistData, tracksData, isFetching) => {
+    console.log(tracksData, isFetching);
+    
     if (isFetching) return null
     const name = artistData.name;
     const contentType = 'Artist';

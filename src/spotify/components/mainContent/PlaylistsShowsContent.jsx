@@ -6,6 +6,8 @@ export const PlaylistsShowsContent = () => {
     const resp = useGetContent(entity, ID);
 
     return (
-        <ContentInfo  {...resp}></ContentInfo>
+        <>
+            {!resp.isFetching && <ContentInfo {...resp} />}
+        </>
     );
 };

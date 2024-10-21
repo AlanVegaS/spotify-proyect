@@ -4,8 +4,6 @@ import { formatDataEpisodes, formatDataTracksPlaylist } from '../helpers/formatD
 
 export const useGetContent = (typeContent, id) => {
 
-    const [getInfoArtist, { data: infoArtist, isFetching: isFetchingInfoArtist }] = useLazyGetInfoArtistQuery();
-
     const queryMapping = {
         playlist: useGetTracksPlaylistQuery,
         show: useGetEpisodesShowsQuery,

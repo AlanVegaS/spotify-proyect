@@ -1,20 +1,17 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
-import { setContentActive, setPlayPause } from "../../../store/spotify/spotifySlice";
-import { useLazyGetTracksPlaylistQuery } from "../../../store/api";
+import { useGetContent } from "../../hooks/useGetContent";
+import { useSelector } from "react-redux";
 
 export const PlayPauseIcon = ({ id, type: typeContent }) => {//id from parent content
 
     const { isPlaying, idContent } = useSelector((state) => state.spotify.contentActive);
     let isActive = (idContent === id) && isPlaying;
-    const dispatch = useDispatch();
 
-    const [getPlaylist, { data }] = useLazyGetTracksPlaylistQuery();
+    //useGetContent(typeContent,id);
 
     const togglePlayPause = () => {
-
-        if (idContent !== id) {//new reproduction
+        /*if (idContent !== id) {//new reproduction
             getPlaylist(id);
             const newContentActive = {
                 idContent: id,
@@ -25,7 +22,7 @@ export const PlayPauseIcon = ({ id, type: typeContent }) => {//id from parent co
             dispatch(setContentActive(newContentActive));
         } else {//same reproduction
             dispatch(setPlayPause());
-        }
+        }*/
     };
 
     return (

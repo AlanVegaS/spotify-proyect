@@ -30,7 +30,7 @@ export const ContentInfo = ({ id, name, contentType, img, info, contentList, isF
                         <div className="m-sm mt-4 h-16 flex"
                             onClick={(event) => event.stopPropagation()}
                         >
-                            <PlayPauseIcon id={id}></PlayPauseIcon>
+                            <PlayPauseIcon id={id} type= {contentType}></PlayPauseIcon>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
                     </motion.div>
