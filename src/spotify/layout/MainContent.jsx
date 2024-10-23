@@ -1,4 +1,4 @@
-import { Header, PlaylistsShowsContent, HomeContent, ArtistContent } from "../components/mainContent";
+import { Header, TracksContent, HomeContent } from "../components/mainContent";
 import { useGetDataUrl } from "../hooks";
 import { Search } from "../components/library";
 
@@ -7,9 +7,8 @@ export const MainContent = () => {
 
 	let content;
 	if (!entity) content = <HomeContent></HomeContent>
-	else if (entity === 'show' || entity === 'playlist') content = <PlaylistsShowsContent></PlaylistsShowsContent>
-	else if (entity === 'artist') content = <ArtistContent></ArtistContent>
-	else if (entity === 'search') content = <Search></Search>
+	else if (entity !== 'search') content = <TracksContent></TracksContent>
+	else content = <Search></Search>
 
 	return (
 		<main className="main flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto">

@@ -1,9 +1,10 @@
 import { ContentInfo } from '.';
 import { useGetContent, useGetDataUrl } from '../../hooks';
 
-export const PlaylistsShowsContent = () => {
+export const TracksContent = () => {
     const { entity, ID } = useGetDataUrl();
-    const resp = useGetContent(entity, ID);
+    const { getContentInfo } = useGetContent(entity, ID);
+    const resp = getContentInfo(entity, ID);
 
     return (
         <>

@@ -1,28 +1,19 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { useGetContent } from "../../hooks/useGetContent";
 import { useSelector } from "react-redux";
+import { useGetContent } from "../../hooks";
 
 export const PlayPauseIcon = ({ id, type: typeContent }) => {//id from parent content
 
     const { isPlaying, idContent } = useSelector((state) => state.spotify.contentActive);
     let isActive = (idContent === id) && isPlaying;
-
-    //useGetContent(typeContent,id);
+    const { getContentInfo } = useGetContent(typeContent, id);
 
     const togglePlayPause = () => {
-        /*if (idContent !== id) {//new reproduction
-            getPlaylist(id);
-            const newContentActive = {
-                idContent: id,
-                idItem: null,
-                currentNumber: null,
-                listItems: null
-            };
-            dispatch(setContentActive(newContentActive));
-        } else {//same reproduction
-            dispatch(setPlayPause());
-        }*/
+        const resp = getContentInfo(typeContent, id);
+        console.log('====================================');
+        console.log(resp);
+        console.log('====================================');
     };
 
     return (
