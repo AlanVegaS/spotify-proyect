@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { MostHeaderItem } from "./";
 import { motion } from "framer-motion";
 
-
 export const MostHeader = () => {
     const { itemsMostHeaders } = useSelector(state => state.spotify);
 

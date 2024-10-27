@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+
 export const Player = () => {
+
+    const { isPlaying } = useSelector((state) => state.spotify.contentActive);
+
     return (
         <section className="h-full w-6/12 aspect-square flex justify-center items-center gap-4 fill-l-text-primary dark:fill-text-secondary transition-all duration-500">
             <button>
@@ -9,7 +14,13 @@ export const Player = () => {
             </button>
             <div className="h-9 w-9 flex justify-center items-center">
                 <button className="h-9 hover:h-10 active:h-9 rounded-full aspect-square flex justify-center items-center fill-l-base-primary dark:fill-base-primary bg-l-text-primary active:bg-l-text-secondary dark:bg-text-primary dark:active:bg-text-secondary">
+                {
+                    isPlaying ? 
                     <svg className="h-4" aria-hidden="true" viewBox="0 0 16 16"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
+                    : <svg role="img" aria-hidden="true" viewBox="0 0 24 24" className='h-3/5'>
+                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
+                </svg>
+                } 
                 </button>
             </div>
             <button>

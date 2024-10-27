@@ -7,8 +7,8 @@ export const MainContent = () => {
 
 	let content;
 	if (!entity) content = <HomeContent></HomeContent>
-	else if (entity !== 'search') content = <TracksContent></TracksContent>
-	else content = <Search></Search>
+	else if (entity === 'search') content = <Search></Search>
+	else content = <TracksContent></TracksContent>
 
 	return (
 		<main className="main flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto">

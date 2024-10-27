@@ -9,10 +9,10 @@ export const spotifySlice = createSlice(
             itemsMostHeaders: [],
             search: '',
             contentActive: {
-                idContent: null,
-                idItem: null,
-                currentNumber: null,
-                listItems: null,
+                idContent: '',
+                activeItem: {},
+                activeIndex: null,
+                listItems: [],
                 isPlaying: false
             }
         },
@@ -28,6 +28,7 @@ export const spotifySlice = createSlice(
             },
             setContentActive: (state, { payload }) => {
                 state.contentActive = payload;
+                state.contentActive.activeItem = state.contentActive.listItems[state.contentActive.activeIndex];
                 state.contentActive.isPlaying = true;
             },
             setPlayPause: (state) => {

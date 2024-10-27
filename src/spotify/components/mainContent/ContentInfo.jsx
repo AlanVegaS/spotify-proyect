@@ -30,7 +30,7 @@ export const ContentInfo = ({ id, name, contentType, img, info, contentList, isF
                         <div className="m-sm mt-4 h-16 flex"
                             onClick={(event) => event.stopPropagation()}
                         >
-                            <PlayPauseIcon id={id} type= {contentType}></PlayPauseIcon>
+                            <PlayPauseIcon id={id} type={contentType}></PlayPauseIcon>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
                     </motion.div>
@@ -40,11 +40,11 @@ export const ContentInfo = ({ id, name, contentType, img, info, contentList, isF
 };
 
 ContentInfo.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    contentType: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    info: PropTypes.string.isRequired,
-    contentList: PropTypes.array.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    contentType: PropTypes.string,
+    img: PropTypes.string,
+    info: PropTypes.string,
+    contentList: PropTypes.array,
     isFetching: PropTypes.bool.isRequired
 };

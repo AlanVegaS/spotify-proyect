@@ -63,10 +63,16 @@ export const spotifyApi = createApi({
 });
 
 export const { useGetCatalogsQuery,
-    useGetTracksPlaylistQuery,
     useGetLibraryMostHeaderContentQuery,
+
+    useGetTracksPlaylistQuery,
     useGetTopTracksArtistQuery,
     useGetEpisodesShowsQuery,
+
+    useLazyGetTracksPlaylistQuery,
+    useLazyGetTopTracksArtistQuery,
+    useLazyGetEpisodesShowsQuery,
+
     useGetInfoArtistQuery,
     useGetSearchQuery,
 } = spotifyApi;

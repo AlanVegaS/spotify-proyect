@@ -3,9 +3,7 @@ import { PlayPauseIcon } from './PlayPauseIcon';
 import { useNavigate } from 'react-router-dom';
 
 export const MostHeaderItem = ({ img, name, id, type }) => {
-
     const navigate = useNavigate();
-
     const toContent = () => {
         navigate(`/playlist/${id}`);
     };

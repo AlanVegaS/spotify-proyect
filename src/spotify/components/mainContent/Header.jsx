@@ -31,7 +31,7 @@ export const Header = () => {
         navigate(to);
     };
 
-    const { userName } = useSelector(state => state.auth)
+    const { userName } = useSelector(state => state.auth);
     const userShowed = userName.charAt(0);
 
     const inputRef = useRef(null);
