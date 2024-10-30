@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetContent } from "../../hooks";
 import { setContentActive, setPlayPause } from '../../../store/spotify';
 
-export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon }) => {//id from parent content
-    const { idContent } = useSelector((state) => state.spotify.contentActive);
+export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, contentLoaded }) => {//id from parent content
+    const { idContent, isPlaying } = useSelector((state) => state.spotify.contentActive);
     const [isThisActive, setIsThisActive] = useState(idContent === id);
-    const [isThisPlaying, setIsThisPlaying] = useState(false);
+    const [isThisPlaying, setIsThisPlaying] = useState(isPlaying && id === idContent);
     const { content, isFetching, getContentInfo } = useGetContent(typeContent, id);
     const dispatch = useDispatch();
 
@@ -16,7 +16,13 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon }) => {
         if (!isThisPlaying) {
             setIsThisPlaying(true);
             dispatch(setPlayPause());
-            if (!isThisActive) getContentInfo(typeContent, id);
+            if (!isThisActive) {
+                if (!contentLoaded) getContentInfo(typeContent, id);
+                else dispatch(setContentActive({
+                    idContent: contentLoaded.id,
+                    listItems: contentLoaded.contentList,
+                }));
+            }
         }
         else {
             setIsThisPlaying(false);
@@ -26,10 +32,8 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon }) => {
 
     useEffect(() => {
         if (content && !isFetching) {
-            console.log(content);
             dispatch(setContentActive({
                 idContent: content.id,
-                activeIndex: 1,
                 listItems: content.contentList,
             }));
         }
@@ -65,5 +69,6 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon }) => {
 PlayPauseIcon.propTypes = {
     id: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    isAlternativeIcon: PropTypes.bool
+    isAlternativeIcon: PropTypes.bool,
+    contentLoaded: PropTypes.object,
 };

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 export const CurrentSong = () => {
     const { contentActive } = useSelector(state => state.spotify);
+    
     const [content, setContent] = useState();
 
     useEffect(() => {

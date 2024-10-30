@@ -4,10 +4,12 @@ import { Loading, PlayPauseIcon } from "./";
 import { motion } from "framer-motion";
 
 export const ContentInfo = ({ id, name, contentType, img, info, contentList, isFetching }) => {
+    console.log(id);
+
     return (
         <>
             {
-                isFetching
+                (!id)
                     ? <Loading></Loading>
                     : <motion.div
                         animate={{ opacity: 1 }}
@@ -30,7 +32,7 @@ export const ContentInfo = ({ id, name, contentType, img, info, contentList, isF
                         <div className="m-sm mt-4 h-16 flex"
                             onClick={(event) => event.stopPropagation()}
                         >
-                            <PlayPauseIcon id={id} type={contentType}></PlayPauseIcon>
+                            <PlayPauseIcon id={id} type={contentType.toLowerCase()} contentLoaded={{ id, contentList }}></PlayPauseIcon>
                         </div>
                         <ContentTable contentList={contentList}></ContentTable>
                     </motion.div>

@@ -10,10 +10,15 @@ export const spotifySlice = createSlice(
             search: '',
             contentActive: {
                 idContent: '',
-                activeItem: {},
+                trackOrderList: [],
                 activeIndex: null,
                 listItems: [],
                 isPlaying: false
+            },
+            playerSettings: {
+                shuffle: false,
+                repeat: false,
+                repeatOnce: false,
             }
         },
         reducers: {
@@ -28,7 +33,7 @@ export const spotifySlice = createSlice(
             },
             setContentActive: (state, { payload }) => {
                 state.contentActive = payload;
-                state.contentActive.activeItem = state.contentActive.listItems[state.contentActive.activeIndex];
+                state.contentActive.activeIndex = 1;
                 state.contentActive.isPlaying = true;
             },
             setPlayPause: (state) => {
