@@ -4,8 +4,6 @@ import { Loading, PlayPauseIcon } from "./";
 import { motion } from "framer-motion";
 
 export const ContentInfo = ({ id, name, contentType, img, info, contentList, isFetching }) => {
-    console.log(id);
-
     return (
         <>
             {

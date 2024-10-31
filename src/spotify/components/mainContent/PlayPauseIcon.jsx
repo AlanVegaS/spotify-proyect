@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetContent } from "../../hooks";
-import { setContentActive, setPlayPause } from '../../../store/spotify';
+import { useGetContent, usePlayer } from "../../hooks";
+import { setPlayPause } from '../../../store/spotify';
 
 export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, contentLoaded }) => {//id from parent content
     const { idContent, isPlaying } = useSelector((state) => state.spotify.contentActive);
@@ -11,6 +11,7 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     const [isThisPlaying, setIsThisPlaying] = useState(isPlaying && id === idContent);
     const { content, isFetching, getContentInfo } = useGetContent(typeContent, id);
     const dispatch = useDispatch();
+    const {startPlay} = usePlayer();
 
     const togglePlayPause = () => {
         if (!isThisPlaying) {
@@ -18,10 +19,7 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
             dispatch(setPlayPause());
             if (!isThisActive) {
                 if (!contentLoaded) getContentInfo(typeContent, id);
-                else dispatch(setContentActive({
-                    idContent: contentLoaded.id,
-                    listItems: contentLoaded.contentList,
-                }));
+                else startPlay(id, contentLoaded);
             }
         }
         else {
@@ -31,13 +29,8 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     };
 
     useEffect(() => {
-        if (content && !isFetching) {
-            dispatch(setContentActive({
-                idContent: content.id,
-                listItems: content.contentList,
-            }));
-        }
-    }, [content, dispatch, isFetching]);
+        if (content && !isFetching) startPlay(id, content.contentList);
+    }, [content, id, isFetching]);
 
     useEffect(() => {
         setIsThisActive(idContent === id);

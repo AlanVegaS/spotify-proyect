@@ -16,9 +16,9 @@ export const spotifySlice = createSlice(
                 isPlaying: false
             },
             playerSettings: {
-                shuffle: false,
-                repeat: false,
-                repeatOnce: false,
+                isShuffle: false,
+                isRepeat: false,
+                isRepeatOnce: false,
             }
         },
         reducers: {
@@ -39,7 +39,10 @@ export const spotifySlice = createSlice(
             setPlayPause: (state) => {
                 state.contentActive.isPlaying = !state.contentActive.isPlaying;
             },
+            toggleShuffle: (state) => {
+                state.playerSettings.isShuffle = !state.playerSettings.isShuffle;
+            },
         },
     });
 
-export const { setLibrary, setMostHeaders, setSearch, setContentActive, setPlayPause } = spotifySlice.actions;
+export const { setLibrary, setMostHeaders, setSearch, setContentActive, setPlayPause, toggleShuffle } = spotifySlice.actions;
