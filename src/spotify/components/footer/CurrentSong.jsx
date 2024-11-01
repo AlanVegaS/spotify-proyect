@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export const CurrentSong = () => {
-    const { contentActive } = useSelector(state => state.spotify);
-    
+    const { activeIndex, listItems } = useSelector(state => state.spotify.contentActive);
+
     const [content, setContent] = useState();
 
     useEffect(() => {
-        if (contentActive.activeIndex) {
-            const { img, name, info } = contentActive.listItems[contentActive.activeIndex];
+        console.log(activeIndex, listItems);
 
+        if (activeIndex || activeIndex === 0) {
+            const { img, name, info } = listItems[activeIndex];
             setContent({ img, name, info });
         }
-    }, [contentActive]);
+    }, [listItems, activeIndex]);
 
     return (
         <section className="h-full w-3/12 aspect-square flex p-sm gap-2 transition-all duration-500">
