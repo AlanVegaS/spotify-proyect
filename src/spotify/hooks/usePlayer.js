@@ -3,7 +3,8 @@ import { setContentActive } from "../../store/spotify/spotifySlice";
 
 export const usePlayer = () => {
     const dispatch = useDispatch();
-    const { isShuffle, isRepeat, isRepeatOnce } = useSelector((state) => state.spotify.playerSettings);
+    const { isShuffle } = useSelector((state) => state.spotify.playerSettings);
+
 
     const startPlay = (idContent, listItems) => {
         dispatch(setContentActive({
@@ -21,10 +22,10 @@ export const usePlayer = () => {
 
         while (orderList.length) {
             const indexRandom = Math.floor(Math.random() * orderList.length);
-            shuffledList.push(orderList.splice(indexRandom, 1)[0]); 
+            shuffledList.push(orderList.splice(indexRandom, 1)[0]);
         }
         return shuffledList ;
     };
 
-    return { startPlay }
+    return { startPlay, getOrderList }
 };

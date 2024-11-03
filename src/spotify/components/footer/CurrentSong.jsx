@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useGetActiveSong } from "../../hooks";
 
 export const CurrentSong = () => {
-    const { activeIndex, listItems } = useSelector(state => state.spotify.contentActive);
-
-    const [content, setContent] = useState();
-
-    useEffect(() => {
-        console.log(activeIndex, listItems);
-
-        if (activeIndex || activeIndex === 0) {
-            const { img, name, info } = listItems[activeIndex];
-            setContent({ img, name, info });
-        }
-    }, [listItems, activeIndex]);
+    const { activeSong: content } = useGetActiveSong();
 
     return (
         <section className="h-full w-3/12 aspect-square flex p-sm gap-2 transition-all duration-500">

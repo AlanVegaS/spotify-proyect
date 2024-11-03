@@ -1,15 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changePlayerMode, setNextSong, setPreviousSong, toggleShuffle } from "../../../store/spotify";
+import { changePlayerMode, setNewListOrder, setNextSong, setPreviousSong, toggleShuffle } from "../../../store/spotify";
 import { motion } from "framer-motion";
+import { usePlayer } from "../../hooks/usePlayer";
 
 export const Player = () => {
 
-    const { isPlaying } = useSelector((state) => state.spotify.contentActive);
+    const { isPlaying, listItems } = useSelector((state) => state.spotify.contentActive);
     const { isShuffle, isRepeat, isRepeatOnce } = useSelector((state) => state.spotify.playerSettings);
+    const { getOrderList } = usePlayer();
     const dispatch = useDispatch();
 
     const onToggleShuffle = () => {
         dispatch(toggleShuffle());
+        if (isPlaying) {
+            const newOrderList = getOrderList(listItems, !isShuffle);
+            dispatch(setNewListOrder(newOrderList));
+        }
     };
 
     const onNextSong = () => {

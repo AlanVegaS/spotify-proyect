@@ -36,6 +36,7 @@ export const spotifySlice = createSlice(
                 state.contentActive = payload;
                 state.contentActive.activeIndex = 0;
                 state.contentActive.isPlaying = true;
+                state.playerSettings.isAlreadyPlayed = false
             },
             setPlayPause: (state) => {
                 state.contentActive.isPlaying = !state.contentActive.isPlaying;
@@ -79,6 +80,9 @@ export const spotifySlice = createSlice(
                     state.playerSettings.isRepeatOnce = false;
                 }
             },
+            setNewListOrder: (state, { payload }) => {
+                state.contentActive.trackOrderList = payload;
+            },
         },
     });
 
@@ -92,4 +96,5 @@ export const {
     setNextSong,
     setPreviousSong,
     changePlayerMode,
+    setNewListOrder,
 } = spotifySlice.actions;

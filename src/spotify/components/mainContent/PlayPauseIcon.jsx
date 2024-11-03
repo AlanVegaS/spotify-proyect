@@ -11,9 +11,10 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     const [isThisPlaying, setIsThisPlaying] = useState(isPlaying && id === idContent);
     const { content, isFetching, getContentInfo } = useGetContent(typeContent, id);
     const dispatch = useDispatch();
-    const {startPlay} = usePlayer();
+    const { startPlay } = usePlayer();
 
     const togglePlayPause = () => {
+
         if (!isThisPlaying) {
             setIsThisPlaying(true);
             dispatch(setPlayPause());

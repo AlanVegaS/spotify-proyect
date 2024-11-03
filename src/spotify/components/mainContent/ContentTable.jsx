@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { TrackItem } from './TrackItem';
+import { useGetActiveSong } from '../../hooks';
 
 export const ContentTable = ({ contentList }) => {
+    const { activeSong } = useGetActiveSong();
     return (
         <div className="fill-base-primary dark:fill-text-primary">
             <div className="grid grid-cols-table-content h-7 m-4 ml-sm border-b-l-text-secondary border-solid border-b">
@@ -12,10 +14,10 @@ export const ContentTable = ({ contentList }) => {
                 </div>
             </div>
             {contentList && contentList.map(item => (
-                <TrackItem key={item.id} {...item}></TrackItem>
+                <TrackItem key={item.id} {...item} activeIdSong={activeSong?.id}></TrackItem>
             ))}
         </div>
-    )
+    );
 };
 
 ContentTable.propTypes = {
