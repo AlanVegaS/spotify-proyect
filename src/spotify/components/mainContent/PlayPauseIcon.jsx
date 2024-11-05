@@ -14,7 +14,6 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     const { startPlay } = usePlayer();
 
     const togglePlayPause = () => {
-
         if (!isThisPlaying) {
             setIsThisPlaying(true);
             dispatch(setPlayPause());
@@ -36,7 +35,11 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     useEffect(() => {
         setIsThisActive(idContent === id);
         if (idContent !== id) setIsThisPlaying(false);
-    }, [id, idContent, isThisActive])
+    }, [id, idContent, isThisActive]);
+
+    useEffect(() => {
+        if (isThisActive) setIsThisPlaying(isPlaying);
+    }, [isPlaying, isThisActive]);
 
     const buttonStyle = !isAlternativeIcon && 'bg-base-green shadow-play';
     return (

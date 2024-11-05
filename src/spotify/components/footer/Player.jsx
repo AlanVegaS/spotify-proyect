@@ -1,14 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changePlayerMode, setNewListOrder, setNextSong, setPreviousSong, toggleShuffle } from "../../../store/spotify";
+import { changePlayerMode, setNewListOrder, setNextSong, setPlayPause, setPreviousSong, toggleShuffle } from "../../../store/spotify";
 import { motion } from "framer-motion";
 import { usePlayer } from "../../hooks/usePlayer";
+import { useEffect, useState } from "react";
 
 export const Player = () => {
 
     const { isPlaying, listItems } = useSelector((state) => state.spotify.contentActive);
     const { isShuffle, isRepeat, isRepeatOnce } = useSelector((state) => state.spotify.playerSettings);
+    const [isPlayerDisabled, setIsPlayerDisabled] = useState(listItems.length === 0);
     const { getOrderList } = usePlayer();
     const dispatch = useDispatch();
+    const [scales, setScales] = useState({ whileHover: 1, whileTap: 1 });
+
+    useEffect(() => {
+        if (listItems.length === 0) {
+            setIsPlayerDisabled(true);
+            setScales({ whileHover: 1, whileTap: 1 });
+        } else {
+            setIsPlayerDisabled(false);
+            setScales({ whileHover: 1.1, whileTap: .9 });
+        }
+    }, [listItems]);
 
     const onToggleShuffle = () => {
         dispatch(toggleShuffle());
@@ -30,34 +43,43 @@ export const Player = () => {
         dispatch(changePlayerMode());
     };
 
+    const onPlayPause = () => {
+        if (listItems) {
+            dispatch(setPlayPause());
+        }
+    };
+
     return (
-        <section className="h-full w-6/12 aspect-square flex justify-center items-center gap-4 fill-l-text-primary dark:fill-text-secondary transition-all duration-500" aria-disabled>
+        <section className="h-full w-6/12 aspect-square flex justify-center items-center gap-4 fill-l-text-primary dark:fill-text-secondary">
             <motion.button
                 onClick={onToggleShuffle}
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: .9 }}
                 transition={{ stiffness: 400, damping: 17 }}
             >
                 <svg className={`h-4 ${isShuffle ? 'fill-text-green dark:fill-base-green' : 'dark:active:fill-text-secondary dark:hover:fill-text-primary hover:fill-l-text-secondary active:fill-l-text-primary'}`} aria-hidden="true" viewBox="0 0 16 16"><path d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z"></path><path d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.938z"></path></svg>
             </motion.button>
             <motion.button
                 onClick={onPreviousSong}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: scales.whileHover }}
+                whileTap={{ scale: scales.whileTap }}
                 transition={{ stiffness: 400, damping: 17 }}
+                disabled={isPlayerDisabled}
             >
-                <svg className="h-4 dark:active:fill-text-secondary dark:hover:fill-text-primary hover:fill-l-text-secondary active:fill-l-text-primary" aria-hidden="true" viewBox="0 0 16 16"><path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"></path></svg>
+                <svg className={`h-4 ${!isPlayerDisabled ? 'dark:active:fill-text-secondary dark:hover:fill-text-primary hover:fill-l-text-secondary active:fill-l-text-primary' : 'fill-l-text-secondary cursor-not-allowed'}`} aria-hidden="true" viewBox="0 0 16 16"><path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"></path></svg>
             </motion.button>
             <div className="h-9 w-9 flex justify-center items-center">
-                <motion.button className="h-9 rounded-full aspect-square flex justify-center items-center fill-l-base-primary dark:fill-base-primary bg-l-text-primary active:bg-l-text-secondary dark:bg-text-primary dark:active:bg-text-secondary"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                <motion.button className={`h-9 rounded-full aspect-square flex justify-center items-center ${!isPlayerDisabled ? 'fill-l-base-primary dark:fill-base-primary bg-l-text-primary active:bg-l-text-secondary dark:bg-text-primary dark:active:bg-text-secondary' : 'bg-l-text-secondary fill-l-base-primary dark:fill-base-primary cursor-not-allowed'}`}
+                    whileHover={{ scale: scales.whileHover }}
+                    whileTap={{ scale: scales.whileTap }}
                     transition={{ stiffness: 400, damping: 17 }}
+                    onClick={onPlayPause}
+                    disabled={isPlayerDisabled}
                 >
                     {
                         isPlaying
                             ? <svg className="h-4" aria-hidden="true" viewBox="0 0 16 16"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
-                            : <svg role="img" aria-hidden="true" viewBox="0 0 24 24" className='h-3/5'>
+                            : <svg className="h-4" role="img" aria-hidden="true" viewBox="0 0 24 24">
                                 <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
                             </svg>
                     }
@@ -65,16 +87,17 @@ export const Player = () => {
             </div>
             <motion.button
                 onClick={onNextSong}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: scales.whileHover }}
+                whileTap={{ scale: scales.whileTap }}
                 transition={{ stiffness: 400, damping: 17 }}
+                disabled={isPlayerDisabled}
             >
-                <svg className="h-4 dark:active:fill-text-secondary dark:hover:fill-text-primary hover:fill-l-text-secondary active:fill-l-text-primary" aria-hidden="true" viewBox="0 0 16 16" ><path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"></path></svg>
+                <svg className={`h-4 ${!isPlayerDisabled ? 'dark:active:fill-text-secondary dark:hover:fill-text-primary hover:fill-l-text-secondary active:fill-l-text-primary' : 'fill-l-text-secondary cursor-not-allowed'}`} aria-hidden="true" viewBox="0 0 16 16" ><path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"></path></svg>
             </motion.button>
             <motion.button
                 onClick={onChangePlayerMode}
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: .9 }}
                 transition={{ stiffness: 400, damping: 17 }}
             >
                 {!isRepeatOnce
