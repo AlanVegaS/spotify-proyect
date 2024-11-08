@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 export const TrackItem = ({ id, img, name, info, duration, activeIdSong }) => {
+    const { isPlaying } = useSelector((state) => state.spotify.contentActive);
     const isActiveSong = activeIdSong === id;
     return (
         <article key={id} className="grid grid-cols-table-content hover:bg-l-hover-card dark:hover:bg-hover-card rounded-sm items-center first:justify-items-center ml-sm">
             <div className="flex justify-center w-full h-4">
                 {
-                    isActiveSong
+                    isActiveSong && isPlaying
                         ? <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif" alt="" />
                         : <svg aria-hidden="true" viewBox="0 0 24 24" ><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg>
                 }

@@ -2,9 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { PlayPauseIcon } from '../mainContent';
+import { useSelector } from 'react-redux';
 
 export const LibraryItem = ({ type, name, img, id }) => {
     const navigate = useNavigate();
+    const { idContent, isPlaying } = useSelector((state) => state.spotify.contentActive);
+    const thisIsActive = idContent === id;
     const toContent = () => {
         navigate(`/playlist/${id}`);
     };
@@ -24,9 +27,17 @@ export const LibraryItem = ({ type, name, img, id }) => {
                     </div>
                 </div>
             </div>
-            <div className="text-l-text-primary dark:text-text-primary ml-3 truncate">
-                <p className="font-bold truncate">{name}</p>
-                <p className="font-light">{type}</p>
+            <div className="flex justify-between items-center w-full text-l-text-primary dark:text-text-primary ml-3 truncate">
+                <div className='w-11/12'>
+                    <p className={`${thisIsActive && 'text-text-green'} font-bold truncate`}>{name}</p>
+                    <p className="font-light">{type}</p>
+                </div>
+                <div className="flex justify-center h-4">
+                    {
+                        thisIsActive && isPlaying
+                            && <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif" alt="" />
+                    }
+                </div>
             </div>
         </motion.figure>
     );
