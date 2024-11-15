@@ -17,8 +17,8 @@ export default {
                 'l-text-primary': 'rgb(43, 43, 43)',
                 'text-secondary': '#b3b3b3',
                 'l-text-secondary': '#636363',
-                'hover-card': '#202020',
-                'l-hover-card': '#b3b3b3',
+                'hover-card': 'rgba(255, 255, 255, 0.1)',
+                'l-hover-card': 'rgba(0,0,0,.2)',
                 'base-green': '#1ed760',
                 'text-green': '#169c46',
                 'invalid': '#e91429',
@@ -31,6 +31,7 @@ export default {
                 'l-traslucid-1': 'hsla(0,0%,50%,.1)',
                 'l-traslucid-2': 'hsla(0,0%,50%,.2)',
                 'l-traslucid-5': 'hsla(0,0%,50%,.5)',
+                'traslucid-full': 'hsla(0,0%,100%,0)',
             },
             borderRadius: {
                 'base-field': '9999px',
@@ -74,8 +75,20 @@ export default {
                 'most-header-sm': 'repeat(2, minmax(180px, 1fr))',
                 'most-header-lg': 'repeat(4, minmax(190px, 1fr))',
                 'catalog-content': 'repeat(auto-fill, minmax(165px, 1fr))',
+                'table-content': '60px,1fr,80px',
+                'sm-template': '6em 1fr',
+                'md-template': '18em 1fr',
+                'lg-template': '31% 1fr',
+                'xl-template': '25em 1fr',
             }, gridTemplateRows: {
                 'catalog-content': '1fr',
+                'standar-template': 'calc(100vh - 6.8em) 5.5em',
+
+            }, gridTemplateAreas: {
+                'standar-template': [
+                    'side main',
+                    'footer footer',
+                ],
             }, animation: {
                 wiggle: 'wiggle 1s ease-in-out',
             }, keyframes: {
@@ -88,5 +101,7 @@ export default {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@savvywombat/tailwindcss-grid-areas')
+      ],
 }

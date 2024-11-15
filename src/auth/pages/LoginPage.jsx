@@ -3,19 +3,17 @@ import { startLogin } from '../../store/auth';
 import { useForm } from '../hooks/useForm';
 
 export const LoginPage = () => {
-  const { formState, onInputChange, validState, setvalidState } = useForm();
+  const { formState: userName, onInputChange, validState, setvalidState } = useForm();
 
   const dispatch = useDispatch();
 
   const onSubmit = () => {
     event.preventDefault();
 
-    if (formState.length > 3) {
-      localStorage.setItem('userName', formState);
-      dispatch(startLogin());
-    }
+    if (userName.length > 3)
+      dispatch(startLogin(userName));
     else setvalidState(false);
-  };
+  }
 
   return (
     <>
@@ -26,7 +24,7 @@ export const LoginPage = () => {
             <h2 className="text-3xl font-bold mt-5 mb-10">Sign in to Spotify</h2>
             <div className="flex flex-col">
               <label className="font-bold" >User Name</label>
-              <input type="text" className={`mt-2 w-80 text-black rounded-sm bg-deep-gray border text-l p-3 ${!validState ? 'border-invalid' : 'border-white'}`} placeholder="Type your name" value={formState} onChange={onInputChange} />
+              <input type="text" className={`mt-2 w-80 text-black rounded-sm bg-deep-gray border text-l p-3 ${!validState ? 'border-invalid' : 'border-white'}`} placeholder="Type your name" value={userName} onChange={onInputChange} />
               <span className={!validState ? 'flex py-1 mt-2' : 'hidden'} >
                 <svg className="h-4 fill-invalid mr-1 mt-1" viewBox="0 0 16 16"><path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path><path d="M7.25 9V4h1.5v5h-1.5zm0 3.026v-1.5h1.5v1.5h-1.5z"></path></svg>
                 <p className="font-light ">Please type your name</p>

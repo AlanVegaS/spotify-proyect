@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        status: 'not-authenticated',//not-authenticated, authenticated
-        userName: null,
-        tokenAuth: null
+        status: localStorage.getItem('userName') && localStorage.getItem('tokenAuth') ? 'authenticated' : 'not-authenticated',//not-authenticated, authenticated
+        userName: localStorage.getItem('userName') || null,
+        tokenAuth: localStorage.getItem('tokenAuth') || null,
     },
     reducers: {
         login: (state, { payload }) => {
@@ -15,6 +15,7 @@ export const authSlice = createSlice({
         logout: (state) => {
             state.status = 'not-authenticated';
             state.userName = null;
+            state.tokenAuth = null;
         },
         saveToken: (state, { payload }) => {
             state.tokenAuth = payload;
