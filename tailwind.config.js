@@ -76,8 +76,19 @@ export default {
                 'most-header-lg': 'repeat(4, minmax(190px, 1fr))',
                 'catalog-content': 'repeat(auto-fill, minmax(165px, 1fr))',
                 'table-content': '60px,1fr,80px',
+                'sm-template': '6em 1fr',
+                'md-template': '18em 1fr',
+                'lg-template': '31% 1fr',
+                'xl-template': '25em 1fr',
             }, gridTemplateRows: {
                 'catalog-content': '1fr',
+                'standar-template': 'calc(100vh - 6.8em) 5.5em',
+
+            }, gridTemplateAreas: {
+                'standar-template': [
+                    'side main',
+                    'footer footer',
+                ],
             }, animation: {
                 wiggle: 'wiggle 1s ease-in-out',
             }, keyframes: {
@@ -90,5 +101,7 @@ export default {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('@savvywombat/tailwindcss-grid-areas')
+      ],
 }

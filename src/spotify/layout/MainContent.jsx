@@ -11,7 +11,9 @@ export const MainContent = () => {
 	else content = <TracksContent></TracksContent>
 
 	return (
-		<main className="main flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto">
+		<main className="flex flex-col bg-l-base-secondary dark:bg-base-secondary bg-gradient-to-b from-emerald-100 dark:from-fuchsia-900 rounded-lg h-auto
+			grid-in-main
+		">
 			<Header></Header>
 			<div className="text-l-text-primary dark:text-text-primary p-lg overflow-y-scroll">
 				{

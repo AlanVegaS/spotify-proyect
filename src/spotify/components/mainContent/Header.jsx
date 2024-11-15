@@ -54,6 +54,10 @@ export const Header = () => {
         dispatch(startLogout());
     };
 
+    const navigateGithub = () => {
+        window.open("https://github.com/AlanVegaS/spotify-proyect", "_blank");
+    };
+
     return (
         <header className="flex justify-between p-lg">
             <div className="flex items-center">
@@ -163,8 +167,8 @@ export const Header = () => {
                     >
                         <motion.li variants={itemVariants} className="cursor-pointer hover:bg-l-traslucid-5 rounded-sm p-1" onClick={onLogout}>Logout</motion.li>
                         <motion.li variants={itemVariants} className="cursor-pointer hover:bg-l-traslucid-5 rounded-sm p-1">
-                            <a href="https://github.com/AlanVegaS/spotify-proyect">{`Alan's github`}</a>
-                            </motion.li>
+                            <a onClick={navigateGithub}>{`Alan's github`}</a>
+                        </motion.li>
                     </motion.ul>
                 </motion.nav>
             </div>

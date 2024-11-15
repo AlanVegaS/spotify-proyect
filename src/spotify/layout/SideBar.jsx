@@ -3,9 +3,9 @@ import '../styles/style.css';
 
 export const SideBar = () => {
   return (
-    <aside className="side flex flex-col gap-sm">
+    <aside className="flex flex-col gap-sm grid-in-side">
       <Home></Home>
       <Library></Library>
     </aside>
   );
-};  
+};

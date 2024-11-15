@@ -8,6 +8,10 @@ export const spotifySlice = createSlice(
             itemsLibrary: [],
             itemsMostHeaders: [],
             search: '',
+            sideBar: {
+                isCompressed: false,
+                isModifiedByUser: false,
+            },
             contentActive: {
                 idContent: '',
                 trackOrderList: [],
@@ -31,6 +35,13 @@ export const spotifySlice = createSlice(
             },
             setSearch: (state, { payload }) => {
                 state.search = payload;
+            },
+            setCompressedValue: (state, { payload }) => {
+                state.sideBar.isCompressed = payload;
+            },
+            setCompressedToggleByUser: (state) => {
+                state.sideBar.isCompressed = !state.sideBar.isCompressed;
+                state.sideBar.isModifiedByUser = true;
             },
             setContentActive: (state, { payload }) => {
                 state.contentActive = payload;
@@ -97,4 +108,6 @@ export const {
     setPreviousSong,
     changePlayerMode,
     setNewListOrder,
+    setCompressedValue,
+    setCompressedToggleByUser,
 } = spotifySlice.actions;
