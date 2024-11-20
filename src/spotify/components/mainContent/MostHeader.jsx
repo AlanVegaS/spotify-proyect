@@ -6,7 +6,7 @@ export const MostHeader = () => {
     const { itemsMostHeaders } = useSelector(state => state.spotify);
 
     return (
-        <motion.section className="grid grid-cols-most-header-lg sm:grid-cols-most-header-sm md:grid-cols-most-header-sm gap-4 sm:gap-2 md:gap-2 p-lg"
+        <motion.section className="grid p-lg xs:p-0 grid-cols-most-header-lg xs:grid-cols-most-header-xs sm:grid-cols-most-header-sm md:grid-cols-most-header-sm gap-4 xs:gap-1 sm:gap-2 md:gap-2"
             animate={{ opacity: 1 }}
             transition={{
                 duration: .5

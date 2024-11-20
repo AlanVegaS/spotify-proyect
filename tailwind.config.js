@@ -58,6 +58,7 @@ export default {
                 'sm': '0.5rem',
             },
             screens: {/* Sizes also in src/styles */
+                'xs': { 'min': '10px', 'max': '690px' },
                 'sm': { 'min': '10px', 'max': '964px' },
                 'md': { 'min': '965px', 'max': '1279px' },
                 'lg': { 'min': '1280px', 'max': '1599px' },
@@ -76,6 +77,7 @@ export default {
                 'most-header-lg': 'repeat(4, minmax(190px, 1fr))',
                 'catalog-content': 'repeat(auto-fill, minmax(165px, 1fr))',
                 'table-content': '60px,1fr,80px',
+                'xs-template': '100%',
                 'sm-template': '6em 1fr',
                 'md-template': '18em 1fr',
                 'lg-template': '31% 1fr',
@@ -83,11 +85,14 @@ export default {
             }, gridTemplateRows: {
                 'catalog-content': '1fr',
                 'standar-template': 'calc(100vh - 6.8em) 5.5em',
-
             }, gridTemplateAreas: {
                 'standar-template': [
                     'side main',
                     'footer footer',
+                ],
+                'phone-template': [
+                    'main',
+                    'footer',
                 ],
             }, animation: {
                 wiggle: 'wiggle 1s ease-in-out',
@@ -103,5 +108,5 @@ export default {
     },
     plugins: [
         require('@savvywombat/tailwindcss-grid-areas')
-      ],
+    ],
 }

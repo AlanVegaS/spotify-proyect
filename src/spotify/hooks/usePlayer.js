@@ -6,9 +6,10 @@ export const usePlayer = () => {
     const { isShuffle } = useSelector((state) => state.spotify.playerSettings);
 
 
-    const startPlay = (idContent, listItems) => {
+    const startPlay = (idContent, listItems, typeContent) => {
         dispatch(setContentActive({
             idContent,
+            typeContent,
             trackOrderList: getOrderList(listItems, isShuffle),
             listItems,
         }));
