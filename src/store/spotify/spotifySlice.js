@@ -8,12 +8,14 @@ export const spotifySlice = createSlice(
             itemsLibrary: [],
             itemsMostHeaders: [],
             search: '',
+            phoneMode: false,
             sideBar: {
                 isCompressed: false,
                 isModifiedByUser: false,
             },
             contentActive: {
                 idContent: '',
+                typeContent: '',
                 trackOrderList: [],
                 activeIndex: null,
                 listItems: [],
@@ -43,6 +45,9 @@ export const spotifySlice = createSlice(
                 state.sideBar.isCompressed = !state.sideBar.isCompressed;
                 state.sideBar.isModifiedByUser = true;
             },
+            setModePhone: (state, { payload }) => {
+                state.phoneMode = payload;
+            },
             setContentActive: (state, { payload }) => {
                 state.contentActive = payload;
                 state.contentActive.activeIndex = 0;
@@ -65,6 +70,7 @@ export const spotifySlice = createSlice(
                     }
                     else state.contentActive = {
                         idContent: '',
+                        typeContent: '',
                         trackOrderList: [],
                         activeIndex: null,
                         listItems: [],
@@ -104,6 +110,7 @@ export const {
     setContentActive,
     setPlayPause,
     toggleShuffle,
+    setModePhone,
     setNextSong,
     setPreviousSong,
     changePlayerMode,

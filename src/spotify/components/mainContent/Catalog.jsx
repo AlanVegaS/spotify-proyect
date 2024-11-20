@@ -25,7 +25,7 @@ export const Catalog = ({ category, contenList }) => {
     }, [contenList]);
 
     return (
-        <section className="p-md text-l-text-primary dark:text-text-primary" ref={sectionSizeRef}>
+        <section className="p-md xs:mt-5 xs:p-0 text-l-text-primary dark:text-text-primary" ref={sectionSizeRef}>
             <h2 className="font-bold text-2xl cursor-default">{category}</h2>
             <section className='mt-3 grid grid-rows-catalog-content' style={{ gridTemplateColumns: `repeat(${numberCards}, minmax(165px, 1fr))` }}>
                 {

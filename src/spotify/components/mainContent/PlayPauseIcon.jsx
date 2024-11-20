@@ -19,7 +19,7 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
             dispatch(setPlayPause());
             if (!isThisActive) {
                 if (!contentLoaded) getContentInfo(typeContent, id);
-                else startPlay(id, contentLoaded);
+                else startPlay(id, contentLoaded, typeContent);
             }
         }
         else {
@@ -29,7 +29,7 @@ export const PlayPauseIcon = ({ id, type: typeContent, isAlternativeIcon, conten
     };
 
     useEffect(() => {
-        if (content && !isFetching) startPlay(id, content.contentList);
+        if (content && !isFetching) startPlay(id, content.contentList, typeContent);
     }, [content, id, isFetching]);
 
     useEffect(() => {
