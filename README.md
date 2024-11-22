@@ -8,6 +8,7 @@ Este es un clon de Spotify desarrollado como un proyecto personal con React, Red
 - 📱 Diseño responsive utilizando **Tailwind CSS**
 - 🔥 Estado global manejado con **Redux** y peticiones HTTP optimizadas con **RTK Query**
 - 🎨 Interfaz de usuario similar a la de Spotify
+- 🔐 Protección de rutas dependiendo si el usuario esta autenticado 
 - 🌐 Interacción con la API de Spotify
 - 🛡️ Autenticación mediante token de la API de Spotify, obtenido de un proxy API
 - 👉 [Repositorio de proxy API](https://github.com/AlanVegaS/api-auth-spotify)
