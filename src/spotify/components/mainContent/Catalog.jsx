@@ -5,13 +5,8 @@ import { ContentCard } from './';
 export const Catalog = ({ category, contenList }) => {
     const sectionSizeRef = useRef(null);//section ref
     const [numberCards, setnumberCards] = useState(1);
-    console.log(category);
-    console.log(contenList);
-
 
     useEffect(() => {
-        console.log(contenList);
-
         const handleResize = () => {
             const width = sectionSizeRef.current.offsetWidth;
 
