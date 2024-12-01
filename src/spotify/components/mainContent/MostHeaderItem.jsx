@@ -17,7 +17,7 @@ export const MostHeaderItem = ({ img, name, id, type }) => {
         >
             <div className="h-full flex items-center truncate"
             >
-                <img className="h-full rounded-sm group-hover:shadow-cover transition-shadow duration-text" src={img} alt="cover" />
+                <img className="h-full aspect-square rounded-sm group-hover:shadow-cover transition-shadow duration-text" src={img} alt="cover" />
                 <p className="font-bold ml-sm truncate">{name}</p>
             </div>
             {

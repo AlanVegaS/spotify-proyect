@@ -42,7 +42,7 @@ export const spotifyApi = createApi({
             query: () => 'search?q=top&type=artist%2Cplaylist%2Cshow&market=US&limit=10'
         }),
         getLibraryMostHeaderContent: builder.query({
-            query: () => 'browse/featured-playlists?market=US&fields=playlists%28items%28name%2Ctype%2Cimages%2Cid%29%29&limit=28'
+            query: () => 'search?q=popular&type=playlist&market=US&limit=50'
         }),
         getTopTracksArtist: builder.query({
             query: (id) => `artists/${id}/top-tracks`
@@ -57,7 +57,7 @@ export const spotifyApi = createApi({
             query: (id) => `artists/${id}`
         }),
         getSearch: builder.query({
-            query: (term) => `search?q=${term}&type=artist%2Cplaylist%2Cshow&market=US&limit=10`
+            query: (term) => `search?q=${term}&type=artist%2Cplaylist%2Cshow&market=US&limit=30`
         }),
     })
 });
