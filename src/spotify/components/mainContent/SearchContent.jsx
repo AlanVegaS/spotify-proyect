@@ -12,8 +12,6 @@ export const SearchContent = ({ term }) => {
     const [topPodcast, setPodcast] = useState(null);
 
     useEffect(() => {
-        console.log(data);
-
         const content = data;
         if (content) {
             setTopArtists(content.artists?.items.filter(artists => artists !== null));
