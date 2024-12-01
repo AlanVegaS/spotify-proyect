@@ -12,11 +12,13 @@ export const SearchContent = ({ term }) => {
     const [topPodcast, setPodcast] = useState(null);
 
     useEffect(() => {
+        console.log(data);
+
         const content = data;
         if (content) {
-            setTopArtists(content.artists?.items);
-            setTopPlaylists(content.playlists?.items);
-            setPodcast(content.shows?.items);
+            setTopArtists(content.artists?.items.filter(artists => artists !== null));
+            setTopPlaylists(content.playlists?.items.filter(playlist => playlist !== null));
+            setPodcast(content.shows?.items.filter(shows => shows !== null));
         }
     }, [data]);
 
