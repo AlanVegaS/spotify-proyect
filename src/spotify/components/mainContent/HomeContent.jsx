@@ -4,7 +4,7 @@ export const HomeContent = () => {
 	return (
 		<>
 			<MostHeader></MostHeader>
-			<SearchContent term={'top'}></SearchContent>
+			<SearchContent term={'best'}></SearchContent>
 		</>
 	);
 };
