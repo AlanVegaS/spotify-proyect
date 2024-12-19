@@ -1,7 +1,6 @@
-import spotifyApi from '../../api/axiosConfig';
 import { setMostHeaders, setLibrary } from './';
 
-export const startLoadPlaylists = () => {
+/*export const startLoadPlaylists = () => {
     return async (dispatch, getState) => {
         try {
             console.log('startLoadPlaylists');
@@ -13,4 +12,4 @@ export const startLoadPlaylists = () => {
             console.log(`Request error:${error}`);
         }
     }
-};
+};*/
