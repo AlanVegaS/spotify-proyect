@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { saveToken } from "../auth";
-import { getNewToken } from "../../auth/helpers/getNewToken";
+import { getNewToken } from "../../auth/helpers/authApi";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'https://api.spotify.com/v1/',
@@ -16,7 +16,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
     if (result.error?.status === 401) {
         console.log('Error 401');
-        const newToken = await getNewToken();
+        const user = api.getState().auth.userName;
+        const uidUser = api.getState().auth.uidUser;
+        const newToken = await getNewToken({ user, uidUser });
         api.dispatch(saveToken(newToken));
         localStorage.setItem('tokenAuth', newToken);
         result = await baseQuery(
