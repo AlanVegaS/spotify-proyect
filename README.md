@@ -7,8 +7,11 @@ Este es un clon de Spotify desarrollado como un proyecto personal con React, Red
 - 🎵 Navegación por catálogos de música (artistas, playlists, shows)
 - 📱 Diseño responsive utilizando **Tailwind CSS**
 - 🔥 Estado global manejado con **Redux** y peticiones HTTP optimizadas con **RTK Query**
-- 🌐 Interacción con la API de Spotify
 - 🎨 Interfaz de usuario similar a la de Spotify
+- 🔐 Protección de rutas dependiendo si el usuario esta autenticado 
+- 🌐 Interacción con la API de Spotify
+- 🛡️ Autenticación mediante token de la API de Spotify, obtenido de un proxy API
+- 👉 [Repositorio de proxy API](https://github.com/AlanVegaS/api-auth-spotify)
 
 ## Tecnologías Utilizadas 🛠
 
@@ -48,7 +51,9 @@ Aquí te dejo una lista de las librerías clave que se usaron en este proyecto:
   "@reduxjs/toolkit": "^2.2.7",
   "axios": "^1.7.5",
   "prop-types": "^15.8.1",
+  "framer-motion": "^11.5.5",
   "react": "^18.3.1",
+  "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
   "react-dom": "^18.3.1",
   "react-redux": "^9.1.2",
   "react-router-dom": "^6.26.0",
